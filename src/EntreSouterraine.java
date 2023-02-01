@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class EntreSouterraine extends AbstractEntreSouterraine {
@@ -11,18 +12,20 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
     private Case[][] tabEntreSouterraine;
 
+    private ArrayList<PlacementPiece> placementsPieces = new ArrayList<>();
+
     private boolean estPieceCentraleAjoutee = false;
 
     public EntreSouterraine(int base, int hauteur) {
         setBase(base);
         setHauteur(hauteur);
-        tabEntreSouterraine = new Case[base][hauteur];
+        tabEntreSouterraine = new Case[hauteur][base];
         remplirEntreSouterraine();
     }
 
     private void remplirEntreSouterraine() {
-        for (int i = 0; i < base; i++) {
-            for (int j = 0; j < hauteur; j++) {
+        for (int i = 0; i < hauteur; i++) {
+            for (int j = 0; j < base; j++) {
                 tabEntreSouterraine[i][j] = Case.ESPACE_PLEIN;
             }
         }
@@ -38,6 +41,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
         if (base > 0) {
             this.hauteur = hauteur;
         }
+
     }
 
     @Override
@@ -46,6 +50,10 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
         /**
          * Premiere etape choisir un des quatres cotes au hasard
          */
+        Cote cote = Cote.getCoteHasard();
+        if (cote == Cote.GAUCHE) {
+            
+        }
 
         // TODO Auto-generated method stub
 
@@ -53,6 +61,9 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
     @Override
     public void ajouterPieceCentrale(Piece piece) {
+        // if (estPieceCentraleAjoutee()) {
+        //     throw new RuntimeException("La piece centrale n'est pas ajoute");
+        // }
         /**
          * Pour trouver la position de la piece centrale
          * je vais faire la soustraction de la taille de l'entre et de la piece qu'on vient de nous donner
@@ -69,8 +80,12 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
         int debutHauteurDansEntre = (hauteur - piece.getHauteur()) / 2;
         int finHauteurDansEntre = debutHauteurDansEntre + piece.getHauteur();
 
-        for (int i = debutBaseDansEntre; i < finBaseDansEntre; i++) {
-            for (int j = debutHauteurDansEntre; j < finHauteurDansEntre; j++) {
+        // Placement piece nous permet de suivre les pieces qui
+        // qui sont deja ajoutes dans l'entre
+        placementsPieces.add(new PlacementPiece(piece, new Coordonnee(debutHauteurDansEntre, debutHauteurDansEntre)));
+
+        for (int i = debutHauteurDansEntre; i < finHauteurDansEntre; i++) {
+            for (int j = debutBaseDansEntre; j < finBaseDansEntre; j++) {
                 tabEntreSouterraine[i][j] = Case.ESPACE_VIDE;
             }
         }

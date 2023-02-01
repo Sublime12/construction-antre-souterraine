@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Principal",
+            "request": "launch",
+            "mainClass": "src.Principal",
+            "projectName": "tp-01-entres-souterraines_f634543"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"
@@ -15,7 +22,7 @@
             "name": "Launch Principal",
             "request": "launch",
             "mainClass": "src.Principal",
-            "projectName": "tp-01-entres-souterraines_bfbd91e3",
+            "projectName": "tp-01-entres-souterraines_bfbd91e3"
         }
     ]
 }
