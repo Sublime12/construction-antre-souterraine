@@ -13,9 +13,9 @@ public enum Case {
         } else if (this == ESPACE_VIDE) {
             return '.';
         } else if (this == PORTE_HORIZONTALE) {
-            return '|';
-        } else if  (this == PORTE_VERTICALE) {
             return '-';
+        } else if  (this == PORTE_VERTICALE) {
+            return '|';
         } else {
             return ' ';
         }
