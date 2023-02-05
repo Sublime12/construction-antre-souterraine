@@ -30,7 +30,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
     private void remplirEntreSouterraine() {
         for (int i = 0; i < base; i++) {
             for (int j = 0; j < hauteur; j++) {
-                tabEntreSouterraine[i][j] = Case.ESPACE_PLEIN;
+                tabEntreSouterraine[i][j] = Case.ESPACE_PLEIN_DE_DEPART;
             }
         }
     }
@@ -59,18 +59,20 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
                 placementsPieces.size()
             )
         );
+        PlacementPiece placementDeLaPiece = null;
 
         //2. Choisir un cote au hasard
-        Cote cote = Cote.getCoteHasard();
-        cote = Cote.GAUCHE;
+        var cotesDisponibles =  randomPlacementPiece.getCotesDisponibles();
+        Cote cote = Cote.getCoteHasard(cotesDisponibles);
+        // cote = Cote.GAUCHE;
         if (cote == Cote.GAUCHE) {
             //3. Calcul de la position de la position au hasard
             // Si la porte choisi est gauche alors notre x ne bouge que de -1
             // Alors que y bouge de yHautPiece vers yBas
-            int x = randomPlacementPiece.getCoordonneePointHautPiece().getX() - 1;
+            int x = randomPlacementPiece.getCoordonneePointHautGauchePiece().getX() - 1;
             int y = random.nextInt(
-                randomPlacementPiece.getCoordonneePointHautPiece().getY(),
-                randomPlacementPiece.getCoordonneePointHautPiece().getY() + 
+                randomPlacementPiece.getCoordonneePointHautGauchePiece().getY(),
+                randomPlacementPiece.getCoordonneePointHautGauchePiece().getY() + 
                     randomPlacementPiece.getPiece().getHauteur() 
             );
             var coordonneePorte = new Coordonnee(x, y);
@@ -80,7 +82,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
                 y + 1 - piece.getHauteur()
             );
 
-            var placementDeLaPiece = new PlacementPiece(
+            placementDeLaPiece = new PlacementPiece(
                 piece, 
                 coordonneePointDepartNouvellePiece
             );
@@ -93,6 +95,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
             remplirEntreAvecPiece(placementDeLaPiece);
 
             randomPlacementPiece.setPorteGauche(coordonneePorte);
+            placementDeLaPiece.setPorteDroite(coordonneePorte);
 
             tabEntreSouterraine[x][y] = Case.PORTE_VERTICALE;
             // TODO A enlever
@@ -104,11 +107,78 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
             //      (et -1 pour se decaler de la porte) de x et
             // la hauteur de y par rapport aux coordonnes de la porte selectionne
 
+        } else if (cote == Cote.DROITE) {
+            // 3. Calcul de la position de la position au hasard
+            // Si la porte choisi est gauche alors notre x ne bouge que de -1
+            // Alors que y bouge de yHautPiece vers yBas
+            int x = randomPlacementPiece.getCoordonneePointHautGauchePiece().getX() + randomPlacementPiece.getPiece().getBase() ;
+            int y = random.nextInt(
+                randomPlacementPiece.getCoordonneePointHautGauchePiece().getY(),
+                randomPlacementPiece.getCoordonneePointHautGauchePiece().getY() + 
+                    randomPlacementPiece.getPiece().getHauteur() 
+            );
+            var coordonneePorte = new Coordonnee(x, y);
+
+            var coordonneePointDepartNouvellePiece = new Coordonnee(
+                x + 1, 
+                y + 1 - piece.getHauteur()
+            );
+
+            placementDeLaPiece = new PlacementPiece(
+                piece, 
+                coordonneePointDepartNouvellePiece
+            );
+
+            // TODO A enlever
+            System.out.println("EntreSouterraine.ajouterPiece()");
+            System.out.println(placementDeLaPiece);
+            
+            placementsPieces.add(placementDeLaPiece);
+            remplirEntreAvecPiece(placementDeLaPiece);
+
+            randomPlacementPiece.setPorteDroite(coordonneePorte);
+            placementDeLaPiece.setPorteGauche(coordonneePorte);
+
+            tabEntreSouterraine[x][y] = Case.PORTE_VERTICALE;
+            
+        }
+
+        if (placementDeLaPiece != null) {
+            entourerPlacementPiece(placementDeLaPiece);
         }
 
         // TODO Auto-generated method stub
 
     }
+
+    private void entourerPlacementPiece(PlacementPiece placementPiece) {
+        for (int x = placementPiece.getCoordonneePointHautGauchePiece().getX() - 1; x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 2; x++) {
+            int yHaut = placementPiece.getCoordonneePointHautGauchePiece().getY() - 1;
+            int yBas = placementPiece.getCoordonneePointBasGauchePiece().getY() + 1;
+
+            if (tabEntreSouterraine[x][yHaut] == Case.ESPACE_PLEIN_DE_DEPART) {
+                tabEntreSouterraine[x][yHaut] = Case.ESPACE_PLEIN;
+            }
+
+            if (tabEntreSouterraine[x][yBas] == Case.ESPACE_PLEIN_DE_DEPART) {
+                tabEntreSouterraine[x][yBas] = Case.ESPACE_PLEIN;
+            }
+        }
+
+        for (int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1; y++) {
+            int xGauche = placementPiece.getCoordonneePointHautGauchePiece().getX() - 1;
+            int xDroite = placementPiece.getCoordonneePointHautDroitePiece().getX() + 1;
+
+            if (tabEntreSouterraine[xGauche][y] == Case.ESPACE_PLEIN_DE_DEPART) {
+                tabEntreSouterraine[xGauche][y] = Case.ESPACE_PLEIN;
+            }
+
+            if (tabEntreSouterraine[xDroite][y] == Case.ESPACE_PLEIN_DE_DEPART) {
+                tabEntreSouterraine[xDroite][y] = Case.ESPACE_PLEIN;
+            }
+
+        }
+    } 
 
     @Override
     public void ajouterPieceCentrale(Piece piece) {
@@ -133,7 +203,8 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
         // Placement piece nous permet de suivre les pieces qui
         // qui sont deja ajoutes dans l'entre
-        placementsPieces.add(new PlacementPiece(piece, new Coordonnee(debutBaseDansEntre, debutHauteurDansEntre)));
+        PlacementPiece placementPiece = new PlacementPiece(piece, new Coordonnee(debutBaseDansEntre, debutHauteurDansEntre));
+        placementsPieces.add(placementPiece);
 
         for (int i = debutBaseDansEntre; i < finBaseDansEntre; i++) {
             for (int j = debutHauteurDansEntre; j < finHauteurDansEntre; j++) {
@@ -141,15 +212,21 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
             }
         }
 
+
         // TODO Implementation piece centrale
+        entourerPlacementPiece(placementPiece);
         estPieceCentraleAjoutee = true;
     }
 
     private void remplirEntreAvecPiece(PlacementPiece placementPiece) {
+        if ( !peutRemplirPiece(placementPiece)) {
+            throw new CantAddPieceInEntreSouterraineException("La piece ne peut etre ajoutee");
+        }
+        
         System.out.println("EntreSouterraine.remplirEntreAvecPiece()");
         System.out.println(placementPiece);
-        for (int i = placementPiece.getCoordonneePointHautPiece().getX(); i < placementPiece.getCoordonneePointHautPiece().getX() + placementPiece.getPiece().getBase(); i++) {
-            for (int j = placementPiece.getCoordonneePointHautPiece().getY(); j < placementPiece.getCoordonneePointHautPiece().getY() + placementPiece.getPiece().getHauteur(); j++) {
+        for (int i = placementPiece.getCoordonneePointHautGauchePiece().getX(); i < placementPiece.getCoordonneePointHautGauchePiece().getX() + placementPiece.getPiece().getBase(); i++) {
+            for (int j = placementPiece.getCoordonneePointHautGauchePiece().getY(); j < placementPiece.getCoordonneePointHautGauchePiece().getY() + placementPiece.getPiece().getHauteur(); j++) {
                 // System.out.println("EntreSouterraine.remplirEntreAvecPiece()");
                 // System.out.println("i = " + i + " j = " + j);
                 tabEntreSouterraine[i][j] = Case.ESPACE_VIDE;
@@ -160,7 +237,22 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
     private boolean peutRemplirPiece(PlacementPiece placementPiece) {
         // TODO Implementer la methode de validation du
         // du remplissage de la piece
-        return false;
+        // On va boucler sur toute la zone ou on devrait ajouter la piece
+        // Si on trouve sur l'une des cases un element qui est != de Cote.ESPACE_PLEIN
+        // On doit retourner false sinon on retourne vrai;
+        boolean peutEtreRempli = true;
+        for (int i = 0; i < base && peutEtreRempli; i++) {
+            for (int j = 0; j < hauteur && peutEtreRempli; j++) {
+                if (tabEntreSouterraine[i][j] != Case.ESPACE_PLEIN_DE_DEPART) {
+                    peutEtreRempli = false;
+                    // System.out.println("EntreSouterraine.peutRemplirPiece()");
+                    // System.out.println("i = " + i + " j = " + j);
+                }
+            }
+        }
+
+        return true;
+        // return peutEtreRempli;
     }
 
     @Override

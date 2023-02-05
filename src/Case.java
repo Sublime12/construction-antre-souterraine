@@ -4,18 +4,21 @@ public enum Case {
     ESPACE_VIDE,
     PORTE_HORIZONTALE,
     ESPACE_PLEIN,
-    PORTE_VERTICALE
+    ESPACE_PLEIN_DE_DEPART,    
+    PORTE_VERTICALE,
     ;
 
     public char getCharRepresentation() {
         if (this == ESPACE_PLEIN) {
-            return 'O';
+            return 'x';
         } else if (this == ESPACE_VIDE) {
             return '.';
         } else if (this == PORTE_HORIZONTALE) {
             return '-';
         } else if  (this == PORTE_VERTICALE) {
             return '|';
+        } else if (this == ESPACE_PLEIN_DE_DEPART) {
+            return 'o';
         } else {
             return ' ';
         }

@@ -1,5 +1,8 @@
 package src;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlacementPiece {
     private Piece piece;
 
@@ -26,7 +29,7 @@ public class PlacementPiece {
         // this.placementPorteDansMur = new PlacementPorteDansMur();
     }
 
-    public Coordonnee getCoordonneePointHautPiece() {
+    public Coordonnee getCoordonneePointHautGauchePiece() {
 
         // En donnant une copie des coordonnee on s'evite e
         // que quelqu'un puisse les modifier sans notre consentement
@@ -34,6 +37,54 @@ public class PlacementPiece {
             pointHautGaucheDeLaPiece.getX(), 
             pointHautGaucheDeLaPiece.getY()
         );
+    }
+
+    public Coordonnee getCoordonneePointHautDroitePiece() {
+        return new Coordonnee(
+            pointHautGaucheDeLaPiece.getX() + piece.getBase() - 1,
+            pointHautGaucheDeLaPiece.getY() 
+        );
+    }
+
+    public Coordonnee getCoordonneePointBasGauchePiece() {
+        return new Coordonnee(
+            pointHautGaucheDeLaPiece.getX(),
+            pointHautGaucheDeLaPiece.getY() + piece.getHauteur() - 1
+        );
+    }
+
+    public Coordonnee getCoordonneePointBasDroitePiece() {
+        return new Coordonnee(
+            pointHautGaucheDeLaPiece.getX() + piece.getBase() - 1,
+            pointHautGaucheDeLaPiece.getY() + piece.getHauteur() - 1
+        );
+    }
+
+
+    public List<Cote> getCotesDisponibles() {
+
+        var cotes = new ArrayList<Cote>();
+        
+        if (porteGauche == null) {
+            cotes.add(Cote.GAUCHE);
+        }
+        if (porteDroite == null) {
+            cotes.add(Cote.DROITE);
+        }
+        if (porteHaut == null) {
+            // cotes.add(Cote.HAUT);
+        }
+        
+        if (porteBas == null) {
+            // cotes.add(Cote.BAT);
+        }
+
+        // TODO A supprimer
+        // cotes = new ArrayList<Cote>();
+        // cotes.add(Cote.GAUCHE);
+        // cotes.add(Cote.DROITE);
+
+        return cotes;
     }
 
     public Piece getPiece() {
