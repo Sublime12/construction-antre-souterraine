@@ -9,4 +9,8 @@ public class CantAddPieceInEntreSouterraineException extends RuntimeException {
         super(message);
     }
 
+    public CantAddPieceInEntreSouterraineException(String message, Throwable e) {
+        super(message, e);   
+    }
+
 }

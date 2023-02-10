@@ -7,22 +7,43 @@ public class Principal {
 
     public static void main(String[] args) {
 
-        var entreSouterraine = new EntreSouterraine(40, 32, new Random());
+        var random = new Random();
+        // var entreSouterraine = new EntreSouterraine(50, 30, random);
+        var entreSouterraine = new EntreSouterraine(50, 50, random);
 
-        entreSouterraine.ajouterPieceCentrale(new Piece(15, 10));
+        entreSouterraine.ajouterPieceCentrale(new Piece(8, 10));
         System.out.println(entreSouterraine);
 
-        entreSouterraine.ajouterPiece(new Piece(7, 9));
-        System.out.println(entreSouterraine);
+        // entreSouterraine.ajouterPiece(new Piece(4, 5));
+        // System.out.println(entreSouterraine);
 
-        entreSouterraine.ajouterPiece(new Piece(3, 8));
-        System.out.println(entreSouterraine);
+        // entreSouterraine.ajouterPiece(new Piece(3, 4));
+        // System.out.println(entreSouterraine);
+
+        // entreSouterraine.ajouterPiece(new Piece(4, 2));
+        // System.out.println(entreSouterraine);
+
+        // entreSouterraine.ajouterPiece(new Piece(3, 5));
+        // System.out.println(entreSouterraine);
+
+        // entreSouterraine.ajouterPiece(new Piece(5, 3));
+        // System.out.println(entreSouterraine);
+
 
         // var randomGenerator  = new Random();
 
-        // for (int i = 0; i < 100; i++) {
-        //     entreSouterraine.ajouterPiece(new Piece( randomGenerator.nextInt(4) + 1, randomGenerator.nextInt(4) + 1));
-        // }
+        for (int i = 0; i < 2000; i++) {
+            try {
+                System.out.println(4 - i);
+                // entreSouterraine.ajouterPiece(new Piece(4, 4));
+                entreSouterraine.ajouterPiece(new Piece( random.nextInt(6) + 2, random.nextInt(6) + 2));
+            } catch (CantAddPieceInEntreSouterraineException e) {
+                System.out.println("Exception : " + e);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("La valeur de i lors de l'exception est : " + i);
+                throw e;
+            }
+        }
         System.out.println(entreSouterraine);
 
         // Cote.getCoteHasard();

@@ -9,6 +9,13 @@
             "name": "Launch Principal",
             "request": "launch",
             "mainClass": "src.Principal",
+            "projectName": "tp-01-entres-souterraines_b2844943"
+        },
+        {
+            "type": "java",
+            "name": "Launch Principal",
+            "request": "launch",
+            "mainClass": "src.Principal",
             "projectName": "tp-01-entres-souterraines_f634543"
         },
         {

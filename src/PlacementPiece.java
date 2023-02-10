@@ -72,11 +72,11 @@ public class PlacementPiece {
             cotes.add(Cote.DROITE);
         }
         if (porteHaut == null) {
-            // cotes.add(Cote.HAUT);
+            cotes.add(Cote.HAUT);
         }
         
         if (porteBas == null) {
-            // cotes.add(Cote.BAT);
+            cotes.add(Cote.BAT);
         }
 
         // TODO A supprimer
@@ -112,15 +112,15 @@ public class PlacementPiece {
     }
 
     public boolean isPorteDroitePlacee() {
-        return porteDroite == null;
+        return porteDroite != null;
     }
 
     public boolean isPorteBasPlacee() {
-        return porteBas == null;
+        return porteBas != null;
     }
 
     public boolean isPorteHautPlacee() {
-        return porteHaut == null;
+        return porteHaut != null;
     }
 
     @Override
@@ -130,6 +130,12 @@ public class PlacementPiece {
         text += pointHautGaucheDeLaPiece;
 
         return text;
+    }
+
+    public boolean aMursDisponible() {
+        return 
+            getCotesDisponibles().size() != 0
+        ;
     }
 
 }

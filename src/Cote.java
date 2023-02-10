@@ -28,7 +28,7 @@ public enum Cote {
         //     // cote = BAT;
         //     cote = GAUCHE;
         // }
-
+        
         return cotes.get(randomNumber);
     }
 }
