@@ -1,4 +1,4 @@
-package src;
+package src.Exceptions;
 
 /**
  * J'ai choisi d'utiliser le RuntimeException

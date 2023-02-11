@@ -1,8 +1,8 @@
 package src.Placages;
 
-import src.CantAddPieceInEntreSouterraineException;
 import src.Case;
 import src.PlacementPiece;
+import src.Exceptions.CantAddPieceInEntreSouterraineException;
 
 public class AbstractPlacagePiece {
     

@@ -40,7 +40,7 @@ public class EntreSouterraineFromFileService implements EntreSouterraineServiceI
 
 
         if (entreSouterraine == null) {
-            entreSouterraine = new EntreSouterraine(base, hauteur);
+            // entreSouterraine = new EntreSouterraine(base, hauteur);
         }
 
         return entreSouterraine;

@@ -2,11 +2,11 @@ package src.Placages;
 
 import java.util.Random;
 
-import src.CantAddPieceInEntreSouterraineException;
 import src.Case;
 import src.Coordonnee;
 import src.Piece;
 import src.PlacementPiece;
+import src.Exceptions.CantAddPieceInEntreSouterraineException;
 
 public class PlacagePieceDroite
     extends AbstractPlacagePiece

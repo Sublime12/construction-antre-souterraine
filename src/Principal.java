@@ -2,6 +2,7 @@ package src;
 
 import java.util.Random;
 
+import src.Exceptions.CantAddPieceInEntreSouterraineException;
 import src.Service.PlacagePieceService;
 
 public class Principal {

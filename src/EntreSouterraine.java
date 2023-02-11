@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
+import src.Exceptions.CantAddPieceInEntreSouterraineException;
 import src.Placages.PlacagePieceInterface;
 import src.Service.PlacagePieceServiceInterface;
 
