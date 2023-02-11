@@ -77,9 +77,6 @@ public class PlacagePieceBas
         //     placementsPieces.remove(placementPieceDeDepart);
         // }
 
-
-    
-    // TODO Auto-generated method stub
         return placementDeLaPiece;
     }
         

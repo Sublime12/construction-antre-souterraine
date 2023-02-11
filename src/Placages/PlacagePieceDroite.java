@@ -66,7 +66,5 @@ public class PlacagePieceDroite
 
         return placementDeLaPiece;
     }
-
-        
     
 }
