@@ -19,7 +19,7 @@ public class PlacagePieceGauche
     }
 
     @Override
-    public boolean placerPiece(
+    public PlacementPiece placerPiece(
         Case[][] tabEntreSouterraine, 
         Piece piece,
         PlacementPiece placementPieceDeDepart
@@ -67,7 +67,7 @@ public class PlacagePieceGauche
 
     
         // TODO Auto-generated method stub
-        return false;
+        return placementDeLaPiece;
     }
 
     

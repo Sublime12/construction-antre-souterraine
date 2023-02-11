@@ -15,16 +15,25 @@ public class AbstractPlacagePiece {
         // Si on trouve sur l'une des cases un element qui est != de Cote.ESPACE_PLEIN
         // On doit retourner false sinon on retourne vrai;
         boolean peutEtreRempli = true;
-        for (int x = placementPiece.getCoordonneePointHautGauchePiece().getX(); x < placementPiece.getCoordonneePointHautDroitePiece().getX() && peutEtreRempli; x++) {
-            for (int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); y < placementPiece.getCoordonneePointBasGauchePiece().getY() && peutEtreRempli; y++) {
-                if (tabEntreSouterraine[x][y] != Case.ESPACE_PLEIN_DE_DEPART) {
-                    peutEtreRempli = false;
-                    // System.out.println("EntreSouterraine.peutRemplirPiece()");
-                    // System.out.println("i = " + i + " j = " + j);
+
+        // Avoir une exception du type ArrayIndexOutOfBoundsException
+        // revient a dire que la piece n'entre pas
+        try {
+            for (int x = placementPiece.getCoordonneePointHautGauchePiece().getX(); x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 1 && peutEtreRempli; x++) {
+                for (int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1 && peutEtreRempli; y++) {
+                    if (
+                        tabEntreSouterraine[x][y] != Case.ESPACE_PLEIN_DE_DEPART
+                    ) {
+                        peutEtreRempli = false;
+                        // System.out.println("EntreSouterraine.peutRemplirPiece()");
+                        // System.out.println("i = " + i + " j = " + j);
+                    }
                 }
             }
+    
+        } catch (ArrayIndexOutOfBoundsException e) {
+            peutEtreRempli = false;
         }
-
         return peutEtreRempli;
     }
 
@@ -37,24 +46,83 @@ public class AbstractPlacagePiece {
         // );
         if ( 
             !peutRemplirPiece(
-                tabEntreSouterraine,
+                tabEntreSouterraine, 
                 placementPiece
             )
         ) {
-            throw new CantAddPieceInEntreSouterraineException(
-                "La piece ne peut etre ajoutee"
-            );
+            throw new CantAddPieceInEntreSouterraineException("La piece ne peut etre ajoutee");
         }
         
         System.out.println("EntreSouterraine.remplirEntreAvecPiece()");
         System.out.println(placementPiece);
-        for (int i = placementPiece.getCoordonneePointHautGauchePiece().getX(); i < placementPiece.getCoordonneePointHautGauchePiece().getX() + placementPiece.getPiece().getBase(); i++) {
-            for (int j = placementPiece.getCoordonneePointHautGauchePiece().getY(); j < placementPiece.getCoordonneePointHautGauchePiece().getY() + placementPiece.getPiece().getHauteur(); j++) {
+        for (int i = placementPiece.getCoordonneePointHautGauchePiece().getX(); i < placementPiece.getCoordonneePointHautDroitePiece().getX() + 1; i++) {
+            for (int j = placementPiece.getCoordonneePointHautGauchePiece().getY(); j < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1; j++) {
                 // System.out.println("EntreSouterraine.remplirEntreAvecPiece()");
-                // System.out.println("i = " + i + " j = " + j);
+                System.out.println("x = " + i + " y = " + j);
                 tabEntreSouterraine[i][j] = Case.ESPACE_VIDE;
             }
         }
     }
 
+    // protected void entourerPlacementPiece(
+    //     Case[][] tabEntreSouterraine,
+    //     PlacementPiece placementPiece
+    // ) {
+    //     int base = tabEntreSouterraine.length;
+    //     int hauteur = tabEntreSouterraine[0].length;
+
+    //     System.out.println("AbstractPlacagePiece.entourerPlacementPiece()");
+    //     System.out.println("base : " + base + " hauteur : " + hauteur);
+
+    //     for (int x = placementPiece.getCoordonneePointHautGauchePiece().getX() - 1; x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 2; x++) {
+    //         int yHaut = placementPiece.getCoordonneePointHautGauchePiece().getY() - 1;
+    //         int yBas = placementPiece.getCoordonneePointBasGauchePiece().getY() + 1;
+
+    //         if (
+    //             (yHaut >= 0 && yHaut < hauteur) &&
+    //             (x >= 0 && x < base)
+    //         ) {
+    //             if (tabEntreSouterraine[x][yHaut] == Case.ESPACE_PLEIN_DE_DEPART) {
+    //                 tabEntreSouterraine[x][yHaut] = Case.ESPACE_PLEIN;
+    //             }
+    //         }
+
+    //         if (
+    //             (yBas < hauteur && yBas >= 0) &&
+    //             (x >= 0 && x < base)
+    //         ) {
+    //             if (tabEntreSouterraine[x][yBas] == Case.ESPACE_PLEIN_DE_DEPART) {
+    //                 tabEntreSouterraine[x][yBas] = Case.ESPACE_PLEIN;
+    //             }
+    //         }
+    //     }
+
+    //     for (int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1; y++) {
+    //         int xGauche = placementPiece.getCoordonneePointHautGauchePiece().getX() - 1;
+    //         int xDroite = placementPiece.getCoordonneePointHautDroitePiece().getX() + 1;
+
+    //         if (
+    //             (
+    //                 (xGauche >= 0 && xGauche < base) &&
+    //                 (y >= 0 && y < hauteur)
+
+    //             ) &&
+    //             tabEntreSouterraine[xGauche][y] == Case.ESPACE_PLEIN_DE_DEPART
+    //         ) {
+    //             tabEntreSouterraine[xGauche][y] = Case.ESPACE_PLEIN;
+    //         }
+
+    //         if (
+    //             (
+    //                 (xDroite < base && xDroite >= 0) &&
+    //                 (y >= 0 && y < hauteur)
+    //             ) &&
+    //             tabEntreSouterraine[xDroite][y] == Case.ESPACE_PLEIN_DE_DEPART
+    //         ) {
+    //             tabEntreSouterraine[xDroite][y] = Case.ESPACE_PLEIN;
+    //         }
+
+    //     }
+    
+    // }
 }

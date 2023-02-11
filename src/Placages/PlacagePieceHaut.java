@@ -8,37 +8,34 @@ import src.Coordonnee;
 import src.Piece;
 import src.PlacementPiece;
 
-public class PlacagePieceDroite
+public class PlacagePieceHaut
     extends AbstractPlacagePiece
     implements PlacagePieceInterface {
-    
+
     private Random random;
 
-    public PlacagePieceDroite(Random random) {
+    public PlacagePieceHaut(Random random) {
         this.random = random;
     }
-
 
     @Override
     public PlacementPiece placerPiece(
         Case[][] tabEntreSouterraine, 
-        Piece piece, 
+        Piece piece,
         PlacementPiece placementPieceDeDepart
     ) {
-        // 3. Calcul de la position de la position au hasard
-        // Si la porte choisi est gauche alors notre x ne bouge que de -1
-        // Alors que y bouge de yHautPiece vers yBas
-        int x = placementPieceDeDepart.getCoordonneePointHautGauchePiece().getX() + placementPieceDeDepart.getPiece().getBase();
-        int y = random.nextInt(
-            placementPieceDeDepart.getCoordonneePointHautGauchePiece().getY(),
-            placementPieceDeDepart.getCoordonneePointHautGauchePiece().getY() + 
-                placementPieceDeDepart.getPiece().getHauteur() 
+       
+        int x = random.nextInt(
+            placementPieceDeDepart.getCoordonneePointBasGauchePiece().getX(),
+            placementPieceDeDepart.getCoordonneePointBasDroitePiece().getX() + 1
         );
+        int y = placementPieceDeDepart.getCoordonneePointHautGauchePiece().getY() - 1;
+
         var coordonneePorte = new Coordonnee(x, y);
 
         var coordonneePointDepartNouvellePiece = new Coordonnee(
-            x + 1, 
-            y + 1 - piece.getHauteur()
+            x, 
+            y - piece.getHauteur()
         );
 
         var placementDeLaPiece = new PlacementPiece(
@@ -47,22 +44,31 @@ public class PlacagePieceDroite
         );
 
         // TODO A enlever
-        System.out.println("PlacagePieceDroite.placerPiece()");
+        // System.out.println("EntreSouterraine.ajouterPiece()");
         System.out.println(placementDeLaPiece);
+
         
-        // placementsPieces.add(placementDeLaPiece);
+        
+        System.out.println("Voici les coordonnes de la porte bas : " + coordonneePorte);
+        
         remplirEntreAvecPiece(
             tabEntreSouterraine,
             placementDeLaPiece
         );
+
+        // Attraper une ArrayOutBoundException ici
+        // revient a dire que la porte ne peut pas etre
+        // placee
         try {
-            tabEntreSouterraine[x][y] = Case.PORTE_VERTICALE;
+            tabEntreSouterraine[x][y] = Case.PORTE_HORIZONTALE;
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new CantAddPieceInEntreSouterraineException("La porte n'a pas pu etre ajoute" ,e);
         }
-
-        placementPieceDeDepart.setPorteDroite(coordonneePorte);
-        placementDeLaPiece.setPorteGauche(coordonneePorte);
+        // placementsPieces.add(placementDeLaPiece);
+        
+        // System.out.println(this);
+        placementPieceDeDepart.setPorteHaut(coordonneePorte);
+        placementDeLaPiece.setPorteBas(coordonneePorte);
 
         return placementDeLaPiece;
     }

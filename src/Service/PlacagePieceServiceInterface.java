@@ -1,5 +1,6 @@
-package src;
+package src.Service;
 
+import src.Cote;
 import src.Placages.PlacagePieceInterface;
 
 public interface PlacagePieceServiceInterface {

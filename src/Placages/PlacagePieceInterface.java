@@ -14,7 +14,7 @@ public interface PlacagePieceInterface {
      * @param placementPiece
      * @return
      */
-    public boolean placerPiece(
+    public PlacementPiece placerPiece(
         Case[][] tabEntreSouterraine, 
         Piece piece,
         PlacementPiece placementPieceDeDepart

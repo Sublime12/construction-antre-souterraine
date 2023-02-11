@@ -1,4 +1,4 @@
-package src.Input;
+package src.Placages.Input;
 
 import java.io.BufferedReader;
 import java.io.IOException;
