@@ -1,46 +1,55 @@
 package src.Placages.Input;
 
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Scanner;
 
 import src.EntreSouterraine;
+import src.Service.PlacagePieceServiceInterface;
 
 public class EntreSouterraineFromFileService implements EntreSouterraineServiceInterface {
 
-    private BufferedReader file;
+    private File file;
 
     private EntreSouterraine entreSouterraine;
 
-    public EntreSouterraineFromFileService(BufferedReader file) {
+    private PlacagePieceServiceInterface placagePieceService;
+
+    private Random random;
+
+    public EntreSouterraineFromFileService(
+        File file,
+        PlacagePieceServiceInterface placagePieceService,
+        Random random
+    ) {
         this.file = file;
+        this.placagePieceService = placagePieceService;
+        this.random = random;
     }
 
     @Override
     public EntreSouterraine getEntreSouterraine() {
         int base = 0;
         int hauteur = 0;
-        String premiereLigneFichier = "";
-        String[] coordonneesEntreAsString;
-
-        try {
-            file.reset();
-            // if (file.ready()) {
-                premiereLigneFichier = file.readLine();
-                coordonneesEntreAsString = premiereLigneFichier.trim().split(" ");
-
-            // }
-
-            base = Integer.parseInt(coordonneesEntreAsString[0]);
-            hauteur = Integer.parseInt(coordonneesEntreAsString[1]);
-
-        } catch (IOException e) {
-            System.out.println("Erreur lors de la lecture fichier : " + e);
-        }
-
+        Scanner scanner = null;
 
         if (entreSouterraine == null) {
-            // entreSouterraine = new EntreSouterraine(base, hauteur);
+            try {
+                scanner = new Scanner(file);
+                // scanner.nextLine();
+                 base = scanner.nextInt();
+                 hauteur = scanner.nextInt();
+                 entreSouterraine = new EntreSouterraine(base, hauteur, random, placagePieceService);
+     
+             } catch (IOException e) {
+                 System.out.println("Erreur lors de la lecture fichier : " + e);
+                 throw new RuntimeException(e);
+             } finally {
+                 if (scanner != null) {
+                     scanner.close();
+                 }
+            }
         }
 
         return entreSouterraine;

@@ -101,8 +101,6 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
             entourerPlacementPiece(placementDeLaPiece);
         }
 
-        // TODO Auto-generated method stub
-
     }
 
     private void entourerPlacementPiece(PlacementPiece placementPiece) {
@@ -159,9 +157,9 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
     @Override
     public void ajouterPieceCentrale(Piece piece) {
-        // if (estPieceCentraleAjoutee()) {
-        //     throw new RuntimeException("La piece centrale n'est pas ajoute");
-        // }
+        if (estPieceCentraleAjoutee()) {
+            throw new CantAddPieceInEntreSouterraineException("La piece centrale est deja ajoute");
+        }
         /**
          * Pour trouver la position de la piece centrale
          * je vais faire la soustraction de la taille de l'entre et de la piece qu'on vient de nous donner
@@ -171,7 +169,6 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
         if (piece.getBase() > base || piece.getHauteur() > hauteur) {
             System.out.println("La piece centrale est plus grande que la taille de l'entre");
             throw new CantAddPieceInEntreSouterraineException("On ne peut pas ajouter la piece centrale");
-            // TODO cas a gerer
         }
 
         int debutBaseDansEntre = (base - piece.getBase()) / 2;
@@ -190,8 +187,6 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
             }
         }
 
-
-        // TODO Implementation piece centrale
         entourerPlacementPiece(placementPiece);
         estPieceCentraleAjoutee = true;
     }

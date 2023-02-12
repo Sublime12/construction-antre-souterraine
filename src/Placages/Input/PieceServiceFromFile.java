@@ -1,8 +1,11 @@
 package src.Placages.Input;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import src.Piece;
 
@@ -10,29 +13,29 @@ public class PieceServiceFromFile implements PieceServiceInterface {
 
     private ArrayList<Piece> pieces = new ArrayList<>();
 
-    private BufferedReader file;
+    private File file;
 
     public PieceServiceFromFile instance;
 
-    public PieceServiceFromFile(BufferedReader file) {
+    public PieceServiceFromFile(File file) {
         this.file = file;
         registerPiece();
     }
 
     private void registerPiece() {
         try {
-            file.reset();
-            file.readLine();
-            while (file.ready()) {
-                String[] coordonneesPiece = file.readLine().trim().split(" ");
-                int basePiece = Integer.parseInt(coordonneesPiece[0]);
-                int hauteurPiece = Integer.parseInt(coordonneesPiece[1]);
+        Scanner scanner = new Scanner(file);
+        scanner.nextLine();
+        while(scanner.hasNext()){
+            int base =  scanner.nextInt();
+            int hauteur = scanner.nextInt();
+            pieces.add(new Piece(base, hauteur));
 
-                pieces.add(new Piece(basePiece, hauteurPiece));
-            }
-        } catch (IOException e) {
-            System.out.println("Erreur lors du traitement du fichier en entrée: " + e);
         }
+        } catch (Exception e) {
+        throw new RuntimeException(e);
+        }   
+        
     };
 
     public Piece getPiece(int index) {
@@ -48,6 +51,7 @@ public class PieceServiceFromFile implements PieceServiceInterface {
     public ArrayList<Piece> getPieces() {
         return pieces;
     }
+    
 
 
 }

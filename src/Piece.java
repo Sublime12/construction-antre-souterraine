@@ -13,8 +13,13 @@ public class Piece {
     public int getHauteur() {
         return hauteur;
     }
+    @Override
+    public String toString() {
+        return "Piece [base=" + base + ", hauteur=" + hauteur + "]";
+    }
 
     // public boolean isPiecePrincipale() {
 
     // }
+    
 }
