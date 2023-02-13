@@ -81,6 +81,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
         //2. Choisir un cote au hasard
         var cotesDisponibles =  randomPlacementPiece.getCotesDisponibles();
         Cote cote = Cote.getCoteHasard(cotesDisponibles);
+        cote = Cote.BAT;
         PlacagePieceInterface placagePiece = placagePieceService.getPlacagePiece(cote);
         PlacementPiece placementDeLaPiece = placagePiece.placerPiece(
             tabEntreSouterraine, 
@@ -104,7 +105,11 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
     }
 
     private void entourerPlacementPiece(PlacementPiece placementPiece) {
-        for (int x = placementPiece.getCoordonneePointHautGauchePiece().getX() - 1; x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 2; x++) {
+        for (
+            int x = placementPiece.getCoordonneePointHautGauchePiece().getX() - 1; 
+            x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 2; 
+            x++
+        ) {
             int yHaut = placementPiece.getCoordonneePointHautGauchePiece().getY() - 1;
             int yBas = placementPiece.getCoordonneePointBasGauchePiece().getY() + 1;
 
@@ -127,16 +132,16 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
             }
         }
 
-        for (int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1; y++) {
+        for (
+            int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); 
+            y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1; 
+            y++
+        ) {
             int xGauche = placementPiece.getCoordonneePointHautGauchePiece().getX() - 1;
             int xDroite = placementPiece.getCoordonneePointHautDroitePiece().getX() + 1;
 
             if (
-                (
-                    (xGauche >= 0 && xGauche < base) &&
-                    (y >= 0 && y < hauteur)
-
-                ) &&
+                ((xGauche >= 0 && xGauche < base) && (y >= 0 && y < hauteur)) &&
                 tabEntreSouterraine[xGauche][y] == Case.ESPACE_PLEIN_DE_DEPART
             ) {
                 tabEntreSouterraine[xGauche][y] = Case.ESPACE_PLEIN;

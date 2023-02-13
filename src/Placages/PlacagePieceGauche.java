@@ -32,9 +32,12 @@ public class PlacagePieceGauche
         );
         var coordonneePorte = new Coordonnee(x, y);
 
+        // Le deplacement aletoire permet de decider si on peut placer la piece
+        int deplacementAletoireSurPiece = random.nextInt(piece.getHauteur());
+
         var coordonneePointDepartNouvellePiece = new Coordonnee(
             x - piece.getBase(), 
-            y + 1 - piece.getHauteur()
+            y + 1 - piece.getHauteur() + deplacementAletoireSurPiece
         );
 
         var placementDeLaPiece = new PlacementPiece(

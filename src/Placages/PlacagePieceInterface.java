@@ -12,7 +12,7 @@ public interface PlacagePieceInterface {
      * Le type choisi n'est peut-etre pas le bon mais pour l'instant
      * c'est le mieux qui permette de travailler avec notre entre
      * @param placementPiece
-     * @return
+     * @return <code>PlacementPiece<code/>
      */
     public PlacementPiece placerPiece(
         Case[][] tabEntreSouterraine, 

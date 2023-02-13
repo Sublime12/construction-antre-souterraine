@@ -36,9 +36,11 @@ public class PlacagePieceDroite
         );
         var coordonneePorte = new Coordonnee(x, y);
 
+        int deplacementAletoireSurPiece = random.nextInt(piece.getHauteur());
+
         var coordonneePointDepartNouvellePiece = new Coordonnee(
             x + 1, 
-            y + 1 - piece.getHauteur()
+            y + 1 - piece.getHauteur() + deplacementAletoireSurPiece
         );
 
         var placementDeLaPiece = new PlacementPiece(

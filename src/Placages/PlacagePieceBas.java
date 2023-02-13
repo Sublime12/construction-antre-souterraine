@@ -40,8 +40,10 @@ public class PlacagePieceBas
 
         var coordonneePorte = new Coordonnee(x, y);
 
+        int deplacementAletoireSurPiece = random.nextInt(piece.getBase());
+
         var coordonneePointDepartNouvellePiece = new Coordonnee(
-            x, 
+            x - deplacementAletoireSurPiece, 
             y + 1
         );
 
@@ -50,8 +52,6 @@ public class PlacagePieceBas
             coordonneePointDepartNouvellePiece
         );
 
-        // TODO A enlever
-        // System.out.println("EntreSouterraine.ajouterPiece()");
         System.out.println(placementDeLaPiece);
 
         System.out.println("Voici les coordonnes de la porte bas : " + coordonneePorte);

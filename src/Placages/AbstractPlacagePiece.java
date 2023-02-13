@@ -17,7 +17,7 @@ public class AbstractPlacagePiece {
         boolean peutEtreRempli = true;
 
         // Avoir une exception du type ArrayIndexOutOfBoundsException
-        // revient a dire que la piece n'entre pas
+        // revient a dire que la piece n'entre pas totalement dans l'entre
         try {
             for (int x = placementPiece.getCoordonneePointHautGauchePiece().getX(); x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 1 && peutEtreRempli; x++) {
                 for (int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1 && peutEtreRempli; y++) {
