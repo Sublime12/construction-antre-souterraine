@@ -26,6 +26,7 @@ public class PlacagePieceHaut
         PlacementPiece placementPieceDeDepart
     ) {
        
+        // x et y sont les coordonnees de la porte
         int x = random.nextInt(
             placementPieceDeDepart.getCoordonneePointBasGauchePiece().getX(),
             placementPieceDeDepart.getCoordonneePointBasDroitePiece().getX() + 1
@@ -45,14 +46,6 @@ public class PlacagePieceHaut
             coordonneePointDepartNouvellePiece
         );
 
-        // TODO A enlever
-        // System.out.println("EntreSouterraine.ajouterPiece()");
-        System.out.println(placementDeLaPiece);
-
-        
-        
-        System.out.println("Voici les coordonnes de la porte bas : " + coordonneePorte);
-        
         try {
             remplirEntreAvecPiece(
                 tabEntreSouterraine,
@@ -71,9 +64,7 @@ public class PlacagePieceHaut
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new CantAddPieceInEntreSouterraineException("La porte n'a pas pu etre ajoute" ,e);
         }
-        // placementsPieces.add(placementDeLaPiece);
-        
-        // System.out.println(this);
+
         placementPieceDeDepart.setPorteHaut(coordonneePorte);
         placementDeLaPiece.setPorteBas(coordonneePorte);
 

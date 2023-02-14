@@ -7,13 +7,13 @@ import src.Piece;
 import src.PlacementPiece;
 import src.Exceptions.CantAddPieceInEntreSouterraineException;
 
+
+/**
+ * Elle permet de definir un comportement sur un element
+ * si cette element se retrouvait superposer sur
+ * un autre
+ */
 public interface PeutDeplacerPieceSiSuperpose {
-    // public PlacementPiece deplacerPiece(
-    //     Case[][] tabEntreSouterraine,
-    //     Piece piece,
-    //     Coordonnee coordonneePorte,
-    //     Cote cote
-    // );
 
     public boolean peutRemplirPiece(
         Case[][] tabEntreSouterraine,
@@ -47,11 +47,7 @@ public interface PeutDeplacerPieceSiSuperpose {
 
                 placementDeplacementDeLaPiece = new PlacementPiece(piece, coordonneePointDeDepart);
                 if (peutRemplirPiece(tabEntreSouterraine, placementDeplacementDeLaPiece)) {
-                    // System.out.println("!!!!La piece peut etre rempli");
-                    // throw new RuntimeException("!!!!La piece peut etre rempli");
                     peutDeplacerPiece = true;
-                    System.out.println("PlacagePieceGauche.deplacerPiece()");
-                    System.out.println("La piece a pu etre deplacee");
                 }
             }
         }
@@ -72,9 +68,6 @@ public interface PeutDeplacerPieceSiSuperpose {
                 placementDeplacementDeLaPiece = new PlacementPiece(piece, coordonneePointDeDepart);
                 if (peutRemplirPiece(tabEntreSouterraine, placementDeplacementDeLaPiece)) {
                     peutDeplacerPiece = true;
-                    System.out.println("PeutDeplacerPieceSiSuperpose.deplacerPiece()");
-                    System.out.println("La piece a pu etre deplacee");
-                    // throw new RuntimeException("La piece a pu etre deplacee");
                 }   
             }
         }

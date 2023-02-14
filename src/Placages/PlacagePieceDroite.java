@@ -26,10 +26,13 @@ public class PlacagePieceDroite
         Piece piece, 
         PlacementPiece placementPieceDeDepart
     ) {
-        // 3. Calcul de la position de la position au hasard
-        // Si la porte choisi est gauche alors notre x ne bouge que de -1
-        // Alors que y bouge de yHautPiece vers yBas
-        int x = placementPieceDeDepart.getCoordonneePointHautGauchePiece().getX() + placementPieceDeDepart.getPiece().getBase();
+
+        // x et y sont les coordonnees de la porte
+        int x = 
+            placementPieceDeDepart.getCoordonneePointHautGauchePiece().getX() + 
+            placementPieceDeDepart.getPiece().getBase()
+        ;
+
         int y = random.nextInt(
             placementPieceDeDepart.getCoordonneePointHautGauchePiece().getY(),
             placementPieceDeDepart.getCoordonneePointHautGauchePiece().getY() + 
@@ -49,11 +52,6 @@ public class PlacagePieceDroite
             coordonneePointDepartNouvellePiece
         );
 
-        // TODO A enlever
-        System.out.println("PlacagePieceDroite.placerPiece()");
-        System.out.println(placementDeLaPiece);
-        
-        // placementsPieces.add(placementDeLaPiece);
         try {
             remplirEntreAvecPiece(
                 tabEntreSouterraine,
@@ -61,7 +59,7 @@ public class PlacagePieceDroite
             );
 
         } catch (CantAddPieceInEntreSouterraineException e) {
-            // Le catch ici peut toujours lancer un
+
             placementDeLaPiece = deplacerPiece(tabEntreSouterraine, piece, coordonneePorte, Cote.DROITE);
             remplirEntreAvecPiece(tabEntreSouterraine, placementDeLaPiece);    
         }

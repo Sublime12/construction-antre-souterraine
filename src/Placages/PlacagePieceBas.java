@@ -27,11 +27,6 @@ public class PlacagePieceBas
         PlacementPiece placementPieceDeDepart
     ) {
         
-
-        // 3. Calcul de la position de la porte au hasard
-        // Si la porte choisi est en bas alors notre x ne bouge que de -1
-        // Alors que y bouge de yHautPiece vers yBas
-        
         // x et y representent les cordonnees de la porte
         int x = random.nextInt(
             placementPieceDeDepart.getCoordonneePointBasGauchePiece().getX(),
@@ -53,13 +48,6 @@ public class PlacagePieceBas
             coordonneePointDepartNouvellePiece
         );
 
-        System.out.println(placementDeLaPiece);
-
-        System.out.println("Voici les coordonnes de la porte bas : " + coordonneePorte);
-
-
-        
-        // placementsPieces.add(placementDeLaPiece);
         try {
             remplirEntreAvecPiece(
                 tabEntreSouterraine,
@@ -77,14 +65,9 @@ public class PlacagePieceBas
         } catch (ArrayIndexOutOfBoundsException e) {
             throw new CantAddPieceInEntreSouterraineException("La porte n'a pas pu etre ajoute" ,e);
         }
-        
 
         placementPieceDeDepart.setPorteBas(coordonneePorte);
         placementDeLaPiece.setPorteHaut(coordonneePorte);
-
-        // if ( !placementPieceDeDepart.aMursDisponible()) {
-        //     placementsPieces.remove(placementPieceDeDepart);
-        // }
 
         return placementDeLaPiece;
     }

@@ -26,6 +26,8 @@ public class PlacagePieceGauche
         Piece piece,
         PlacementPiece placementPieceDeDepart
     ) {
+
+        // x et y sont les coordonnees de la porte
         int x = placementPieceDeDepart.getCoordonneePointHautGauchePiece().getX() - 1;
         int y = random.nextInt(
             placementPieceDeDepart.getCoordonneePointHautGauchePiece().getY(),
@@ -34,7 +36,6 @@ public class PlacagePieceGauche
         );
         var coordonneePorte = new Coordonnee(x, y);
 
-        // Le deplacement aletoire permet de decider si on peut placer la piece
         int deplacementAletoireSurPiece = random.nextInt(piece.getHauteur());
 
         var coordonneePointDepartNouvellePiece = new Coordonnee(

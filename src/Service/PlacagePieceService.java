@@ -11,6 +11,12 @@ import src.Placages.PlacagePieceGauche;
 import src.Placages.PlacagePieceHaut;
 import src.Placages.PlacagePieceInterface;
 
+
+/**
+ * Service qui permet de recuperer l'implementation 
+ * de la methode de remplissage d'une piece 
+ * par rapport a un cote qui a ete donne
+ */
 public class PlacagePieceService implements PlacagePieceServiceInterface {
 
     public Random random;

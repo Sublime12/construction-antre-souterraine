@@ -37,18 +37,17 @@ public class EntreSouterraineFromFileService implements EntreSouterraineServiceI
         if (entreSouterraine == null) {
             try {
                 scanner = new Scanner(file);
-                // scanner.nextLine();
-                 base = scanner.nextInt();
-                 hauteur = scanner.nextInt();
-                 entreSouterraine = new EntreSouterraine(base, hauteur, random, placagePieceService);
+                base = scanner.nextInt();
+                hauteur = scanner.nextInt();
+                entreSouterraine = new EntreSouterraine(base, hauteur, random, placagePieceService);
      
-             } catch (IOException e) {
-                 System.out.println("Erreur lors de la lecture fichier : " + e);
-                 throw new RuntimeException(e);
-             } finally {
-                 if (scanner != null) {
-                     scanner.close();
-                 }
+            } catch (IOException e) {
+                System.out.println("Erreur lors de la lecture fichier : " + e);
+                throw new RuntimeException(e);
+            } finally {
+                if (scanner != null) {
+                    scanner.close();
+                }
             }
         }
 

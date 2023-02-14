@@ -4,6 +4,16 @@ import src.Case;
 import src.PlacementPiece;
 import src.Exceptions.CantAddPieceInEntreSouterraineException;
 
+
+/**
+ * Cette classe contient les methodes de utilitaires
+ * pour nous permettre de placer une piece
+ * Le mot <code>Placage</code> (a la place de Placement)  dans <code>AbstractPlacagePiece</code>
+ * a ete choisi pour signifier 
+ * que AbstractPlacagePiece va definir une action sur le placement des pieces
+ * tandisque PlacementPiece lui va stocker les donnees sur 
+ * les placements de piece
+ */
 public abstract class AbstractPlacagePiece implements PeutDeplacerPieceSiSuperpose {
     
     
@@ -19,14 +29,20 @@ public abstract class AbstractPlacagePiece implements PeutDeplacerPieceSiSuperpo
         // Avoir une exception du type ArrayIndexOutOfBoundsException
         // revient a dire que la piece n'entre pas totalement dans l'entre
         try {
-            for (int x = placementPiece.getCoordonneePointHautGauchePiece().getX(); x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 1 && peutEtreRempli; x++) {
-                for (int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1 && peutEtreRempli; y++) {
+            for (
+                int x = placementPiece.getCoordonneePointHautGauchePiece().getX(); 
+                x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 1 && peutEtreRempli; 
+                x++
+            ) {
+                for (
+                    int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); 
+                    y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1 && peutEtreRempli; 
+                    y++
+                ) {
                     if (
                         tabEntreSouterraine[x][y] != Case.ESPACE_PLEIN_DE_DEPART
                     ) {
                         peutEtreRempli = false;
-                        // System.out.println("EntreSouterraine.peutRemplirPiece()");
-                        // System.out.println("i = " + i + " j = " + j);
                     }
                 }
             }
@@ -41,25 +57,28 @@ public abstract class AbstractPlacagePiece implements PeutDeplacerPieceSiSuperpo
         Case[][] tabEntreSouterraine , 
         PlacementPiece placementPiece
     ) {
-        // System.out.println(
-        //     placementPiece.getCoordonneePointHautGauchePiece()
-        // );
         if ( 
             !peutRemplirPiece(
                 tabEntreSouterraine, 
                 placementPiece
             )
         ) {
-            throw new CantAddPieceInEntreSouterraineException("La piece ne peut etre ajoutee");
+            throw new CantAddPieceInEntreSouterraineException(
+                "La piece " + placementPiece + "ne peut etre ajoutee"
+            );
         }
         
-        System.out.println("EntreSouterraine.remplirEntreAvecPiece()");
-        System.out.println(placementPiece);
-        for (int i = placementPiece.getCoordonneePointHautGauchePiece().getX(); i < placementPiece.getCoordonneePointHautDroitePiece().getX() + 1; i++) {
-            for (int j = placementPiece.getCoordonneePointHautGauchePiece().getY(); j < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1; j++) {
-                // System.out.println("EntreSouterraine.remplirEntreAvecPiece()");
-                System.out.println("x = " + i + " y = " + j);
-                tabEntreSouterraine[i][j] = Case.ESPACE_VIDE;
+        for (
+            int x = placementPiece.getCoordonneePointHautGauchePiece().getX(); 
+            x < placementPiece.getCoordonneePointHautDroitePiece().getX() + 1; 
+            x++
+        ) {
+            for (
+                int y = placementPiece.getCoordonneePointHautGauchePiece().getY(); 
+                y < placementPiece.getCoordonneePointBasGauchePiece().getY() + 1; 
+                y++
+            ) {
+                tabEntreSouterraine[x][y] = Case.ESPACE_VIDE;
             }
         }
     }

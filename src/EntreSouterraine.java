@@ -64,10 +64,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
     @Override
     public void ajouterPiece(Piece piece) {
-        System.out.println("EntreSouterraine.ajouterPiece()");
-        System.out.println("Le nb des pieces placees avec murs disponibles : " + placementsPieces.size());
 
-        // TODO
         /**
          * Premiere etape choisir une piece(PlacementPiece au hasard)
          */
@@ -76,12 +73,11 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
                 placementsPieces.size()
             )
         );
-        // randomPlacementPiece = placementsPieces.get(0);
         
         //2. Choisir un cote au hasard
         var cotesDisponibles =  randomPlacementPiece.getCotesDisponibles();
         Cote cote = Cote.getCoteHasard(cotesDisponibles);
-        // cote = Cote.HAUT;
+
         PlacagePieceInterface placagePiece = placagePieceService.getPlacagePiece(cote);
         PlacementPiece placementDeLaPiece = placagePiece.placerPiece(
             tabEntreSouterraine, 
@@ -91,10 +87,8 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
         entourerPlacementPiece(placementDeLaPiece);
         placementsPieces.add(placementDeLaPiece);
-
         
         if ( !randomPlacementPiece.aMursDisponible()) {
-            System.out.println("Une piece est retiree!!");
             placementsPieces.remove(randomPlacementPiece);
         }
 
@@ -114,21 +108,17 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
             int yBas = placementPiece.getCoordonneePointBasGauchePiece().getY() + 1;
 
             if (
-                (yHaut >= 0 && yHaut < hauteur) &&
-                (x >= 0 && x < base)
+                (yHaut >= 0 && yHaut < hauteur) && (x >= 0 && x < base) && 
+                (tabEntreSouterraine[x][yHaut] == Case.ESPACE_PLEIN_DE_DEPART)
             ) {
-                if (tabEntreSouterraine[x][yHaut] == Case.ESPACE_PLEIN_DE_DEPART) {
-                    tabEntreSouterraine[x][yHaut] = Case.ESPACE_PLEIN;
-                }
+                tabEntreSouterraine[x][yHaut] = Case.ESPACE_PLEIN;
             }
 
             if (
-                (yBas < hauteur && yBas >= 0) &&
-                (x >= 0 && x < base)
+                (yBas < hauteur && yBas >= 0) && (x >= 0 && x < base) &&
+                (tabEntreSouterraine[x][yBas] == Case.ESPACE_PLEIN_DE_DEPART)
             ) {
-                if (tabEntreSouterraine[x][yBas] == Case.ESPACE_PLEIN_DE_DEPART) {
-                    tabEntreSouterraine[x][yBas] = Case.ESPACE_PLEIN;
-                }
+                tabEntreSouterraine[x][yBas] = Case.ESPACE_PLEIN;
             }
         }
 
@@ -142,17 +132,14 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
             if (
                 ((xGauche >= 0 && xGauche < base) && (y >= 0 && y < hauteur)) &&
-                tabEntreSouterraine[xGauche][y] == Case.ESPACE_PLEIN_DE_DEPART
+                (tabEntreSouterraine[xGauche][y] == Case.ESPACE_PLEIN_DE_DEPART)
             ) {
                 tabEntreSouterraine[xGauche][y] = Case.ESPACE_PLEIN;
             }
 
             if (
-                (
-                    (xDroite < base && xDroite >= 0) &&
-                    (y >= 0 && y < hauteur)
-                ) &&
-                tabEntreSouterraine[xDroite][y] == Case.ESPACE_PLEIN_DE_DEPART
+                ((xDroite < base && xDroite >= 0) && (y >= 0 && y < hauteur)) &&
+                (tabEntreSouterraine[xDroite][y] == Case.ESPACE_PLEIN_DE_DEPART)
             ) {
                 tabEntreSouterraine[xDroite][y] = Case.ESPACE_PLEIN;
             }
@@ -165,24 +152,24 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
         if (estPieceCentraleAjoutee()) {
             throw new CantAddPieceInEntreSouterraineException("La piece centrale est deja ajoute");
         }
+        
+        if (piece.getBase() > base || piece.getHauteur() > hauteur) {
+            throw new CantAddPieceInEntreSouterraineException(
+                "On ne peut pas ajouter la piece centrale, la piece donnee est trop grande"
+            );
+        }
+            
         /**
          * Pour trouver la position de la piece centrale
          * je vais faire la soustraction de la taille de l'entre et de la piece qu'on vient de nous donner
          * et je divise le resultat par 2
          * Genre
          */
-        if (piece.getBase() > base || piece.getHauteur() > hauteur) {
-            // System.out.println("La piece centrale est plus grande que la taille de l'entre");
-            throw new CantAddPieceInEntreSouterraineException("On ne peut pas ajouter la piece centrale");
-        }
-
         int debutBaseDansEntre = (base - piece.getBase()) / 2;
         int finBaseDansEntre = debutBaseDansEntre + piece.getBase();
         int debutHauteurDansEntre = (hauteur - piece.getHauteur()) / 2;
         int finHauteurDansEntre = debutHauteurDansEntre + piece.getHauteur();
 
-        // Placement piece nous permet de suivre les pieces qui
-        // qui sont deja ajoutes dans l'entre
         PlacementPiece placementPiece = new PlacementPiece(piece, new Coordonnee(debutBaseDansEntre, debutHauteurDansEntre));
         placementsPieces.add(placementPiece);
 
@@ -213,6 +200,5 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
         return entreAsText;
     }
-
 
 }

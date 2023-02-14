@@ -3,6 +3,7 @@ package src;
 public class Piece {
     private int base;
     private int hauteur;
+    
     public Piece(int base, int hauteur) {
         this.base = base;
         this.hauteur = hauteur;
@@ -17,9 +18,4 @@ public class Piece {
     public String toString() {
         return "Piece [base=" + base + ", hauteur=" + hauteur + "]";
     }
-
-    // public boolean isPiecePrincipale() {
-
-    // }
-    
 }

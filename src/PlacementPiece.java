@@ -8,15 +8,6 @@ public class PlacementPiece {
 
     private Coordonnee pointHautGaucheDeLaPiece;
 
-    /** 
-     * J'aurais pu creer une structure PlacementPorteDansMur
-     * mais cela aurait creer une dependance transitive dans le code
-     * plutard (peut-etre pas ...)
-     * Si le besoin se fait resentir je vais remplacer 
-     * les proprietes si-dessous par une classe qui a 
-     * 4 proprietes booleenes
-     */
-
     private Coordonnee porteGauche;
     private Coordonnee porteDroite;
     private Coordonnee porteBas;
@@ -25,14 +16,13 @@ public class PlacementPiece {
     public PlacementPiece(Piece piece, Coordonnee pointHautGaucheDeLaPiece) {
         this.piece = piece;
         this.pointHautGaucheDeLaPiece = pointHautGaucheDeLaPiece;
-        // Pourrais introduire une dependance transitive dans cette classe
-        // this.placementPorteDansMur = new PlacementPorteDansMur();
     }
 
     public Coordonnee getCoordonneePointHautGauchePiece() {
 
         // En donnant une copie des coordonnee on s'evite e
-        // que quelqu'un puisse les modifier sans notre consentement
+        // que quelqu'un puisse modifier nos coordonnes
+        // sans notre consentement
         return new Coordonnee(
             pointHautGaucheDeLaPiece.getX(), 
             pointHautGaucheDeLaPiece.getY()
@@ -79,11 +69,6 @@ public class PlacementPiece {
             cotes.add(Cote.BAT);
         }
 
-        // TODO A supprimer
-        // cotes = new ArrayList<Cote>();
-        // cotes.add(Cote.GAUCHE);
-        // cotes.add(Cote.DROITE);
-
         return cotes;
     }
 
@@ -125,17 +110,11 @@ public class PlacementPiece {
 
     @Override
     public String toString() {
-        String text = "";
-
-        text += pointHautGaucheDeLaPiece;
-
-        return text;
+        return "" + pointHautGaucheDeLaPiece + ", " + piece;
     }
 
     public boolean aMursDisponible() {
-        return 
-            getCotesDisponibles().size() != 0
-        ;
+        return getCotesDisponibles().size() != 0;
     }
 
 }
