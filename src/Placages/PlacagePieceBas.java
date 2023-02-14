@@ -4,6 +4,7 @@ import java.util.Random;
 
 import src.Case;
 import src.Coordonnee;
+import src.Cote;
 import src.Piece;
 import src.PlacementPiece;
 import src.Exceptions.CantAddPieceInEntreSouterraineException;
@@ -59,10 +60,18 @@ public class PlacagePieceBas
 
         
         // placementsPieces.add(placementDeLaPiece);
-        remplirEntreAvecPiece(
-            tabEntreSouterraine,
-            placementDeLaPiece
-        );
+        try {
+            remplirEntreAvecPiece(
+                tabEntreSouterraine,
+                placementDeLaPiece
+            );
+        } catch (CantAddPieceInEntreSouterraineException e) {
+            placementDeLaPiece = deplacerPiece(tabEntreSouterraine, piece, coordonneePorte, Cote.BAT);
+            remplirEntreAvecPiece(
+                tabEntreSouterraine, 
+                placementDeLaPiece
+            );
+        }
         try {
             tabEntreSouterraine[x][y] = Case.PORTE_HORIZONTALE;
         } catch (ArrayIndexOutOfBoundsException e) {

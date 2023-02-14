@@ -81,7 +81,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
         //2. Choisir un cote au hasard
         var cotesDisponibles =  randomPlacementPiece.getCotesDisponibles();
         Cote cote = Cote.getCoteHasard(cotesDisponibles);
-        cote = Cote.BAT;
+        // cote = Cote.HAUT;
         PlacagePieceInterface placagePiece = placagePieceService.getPlacagePiece(cote);
         PlacementPiece placementDeLaPiece = placagePiece.placerPiece(
             tabEntreSouterraine, 
@@ -172,7 +172,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
          * Genre
          */
         if (piece.getBase() > base || piece.getHauteur() > hauteur) {
-            System.out.println("La piece centrale est plus grande que la taille de l'entre");
+            // System.out.println("La piece centrale est plus grande que la taille de l'entre");
             throw new CantAddPieceInEntreSouterraineException("On ne peut pas ajouter la piece centrale");
         }
 

@@ -12,7 +12,7 @@ public enum Case {
         if (this == ESPACE_PLEIN) {
             return 'x';
         } else if (this == ESPACE_VIDE) {
-            return '.';
+            return ' ';
         } else if (this == PORTE_HORIZONTALE) {
             return '-';
         } else if  (this == PORTE_VERTICALE) {
@@ -20,7 +20,7 @@ public enum Case {
         } else if (this == ESPACE_PLEIN_DE_DEPART) {
             return 'o';
         } else {
-            return ' ';
+            return 'E';
         }
     }
 

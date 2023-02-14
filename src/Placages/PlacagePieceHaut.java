@@ -4,6 +4,7 @@ import java.util.Random;
 
 import src.Case;
 import src.Coordonnee;
+import src.Cote;
 import src.Piece;
 import src.PlacementPiece;
 import src.Exceptions.CantAddPieceInEntreSouterraineException;
@@ -52,11 +53,16 @@ public class PlacagePieceHaut
         
         System.out.println("Voici les coordonnes de la porte bas : " + coordonneePorte);
         
-        remplirEntreAvecPiece(
-            tabEntreSouterraine,
-            placementDeLaPiece
-        );
+        try {
+            remplirEntreAvecPiece(
+                tabEntreSouterraine,
+                placementDeLaPiece
+            );
 
+        } catch (CantAddPieceInEntreSouterraineException e) {
+            placementDeLaPiece = deplacerPiece(tabEntreSouterraine, piece, coordonneePorte, Cote.HAUT);
+            remplirEntreAvecPiece(tabEntreSouterraine, placementDeLaPiece);
+        }
         // Attraper une ArrayOutBoundException ici
         // revient a dire que la porte ne peut pas etre
         // placee

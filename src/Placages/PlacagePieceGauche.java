@@ -4,8 +4,10 @@ import java.util.Random;
 
 import src.Case;
 import src.Coordonnee;
+import src.Cote;
 import src.Piece;
 import src.PlacementPiece;
+import src.Exceptions.CantAddPieceInEntreSouterraineException;
 
 public class PlacagePieceGauche 
     extends AbstractPlacagePiece 
@@ -45,33 +47,33 @@ public class PlacagePieceGauche
             coordonneePointDepartNouvellePiece
         );
 
-        // TODO A enlever
-        // System.out.println("EntreSouterraine.ajouterPiece()");
-        // System.out.println(placementDeLaPiece);
-        
-        // placementsPieces.add(placementDeLaPiece);
-        remplirEntreAvecPiece(
-            tabEntreSouterraine,
-            placementDeLaPiece
-        );
+        try {
+            remplirEntreAvecPiece(
+                tabEntreSouterraine,
+                placementDeLaPiece
+            );
 
+            // Si on ne peut pas ajouter la piece par random
+            // on applique notre algorithme de deplacement
+            // dont la signature est definie dans l'interface
+            // PeutDeplacerPieceSiSuperpose
+            // Si apres application deplacement
+            // on ne peut toujours pas ajouter la piece
+            // on va lancer un CantAddPieceInEntreSouterraineException
+            // pour dire qu'on ne peut pas deplacer la piece
+        } catch (CantAddPieceInEntreSouterraineException e) {
+            // Peut lancer une exception si n'arrive pas a deplacer la piece
+            placementDeLaPiece = deplacerPiece(tabEntreSouterraine, piece, coordonneePorte, Cote.GAUCHE);
+
+            remplirEntreAvecPiece(tabEntreSouterraine, placementDeLaPiece);
+        }
+        
         placementPieceDeDepart.setPorteGauche(coordonneePorte);
         placementDeLaPiece.setPorteDroite(coordonneePorte);
-
+        
         tabEntreSouterraine[x][y] = Case.PORTE_VERTICALE;
-        // TODO A enlever
-        // System.out.printf("(%d, %d)\n\n", x, y);
     
-        //4. Placement de la nouvelle piece
-        // Pour placer le bout de la piece juste a cote 
-        // de la piece il faut retrancher la base 
-        //      (et -1 pour se decaler de la porte) de x et
-        // la hauteur de y par rapport aux coordonnes de la porte selectionne
-
-    
-        // TODO Auto-generated method stub
         return placementDeLaPiece;
     }
-
     
 }

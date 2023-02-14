@@ -4,10 +4,10 @@ import src.Case;
 import src.PlacementPiece;
 import src.Exceptions.CantAddPieceInEntreSouterraineException;
 
-public class AbstractPlacagePiece {
+public abstract class AbstractPlacagePiece implements PeutDeplacerPieceSiSuperpose {
     
     
-    protected boolean peutRemplirPiece(
+    public boolean peutRemplirPiece(
         Case[][] tabEntreSouterraine,
         PlacementPiece placementPiece
     ) {
