@@ -1,5 +1,10 @@
 package src;
 
+
+/**
+ * Represente une coordonnee pour un point
+ * dans un tableau a deux dimensions
+ */
 public class Coordonnee {
     private int x;
     private int y;

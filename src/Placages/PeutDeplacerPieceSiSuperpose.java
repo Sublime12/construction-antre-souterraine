@@ -15,6 +15,7 @@ import src.Exceptions.CantAddPieceInEntreSouterraineException;
  */
 public interface PeutDeplacerPieceSiSuperpose {
 
+    
     public boolean peutRemplirPiece(
         Case[][] tabEntreSouterraine,
         PlacementPiece placementPiece

@@ -16,7 +16,10 @@ import src.Exceptions.CantAddPieceInEntreSouterraineException;
  */
 public abstract class AbstractPlacagePiece implements PeutDeplacerPieceSiSuperpose {
     
-    
+    /**
+     * Determine si la piece peut entrer dans 
+     * l'antre a la position donnee de PlacementPiece
+     */
     public boolean peutRemplirPiece(
         Case[][] tabEntreSouterraine,
         PlacementPiece placementPiece
@@ -53,6 +56,11 @@ public abstract class AbstractPlacagePiece implements PeutDeplacerPieceSiSuperpo
         return peutEtreRempli;
     }
 
+    /**
+     * Remplit tabEntreSouterraine avec le placementPiece
+     * @param tabEntreSouterraine
+     * @param placementPiece
+     */
     protected void remplirEntreAvecPiece(
         Case[][] tabEntreSouterraine , 
         PlacementPiece placementPiece

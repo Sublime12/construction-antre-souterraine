@@ -8,6 +8,11 @@ import src.Exceptions.CantAddPieceInEntreSouterraineException;
 import src.Placages.PlacagePieceInterface;
 import src.Service.PlacagePieceServiceInterface;
 
+/**
+ * Classe qui represente l'antre souterraine 
+ * Elle permet d'ajouter la piece centrale
+ * et les autres pieces
+ */
 public class EntreSouterraine extends AbstractEntreSouterraine {
     private int base;
 
@@ -27,6 +32,18 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
     private PlacagePieceServiceInterface placagePieceService;
 
+    /**
+     * Constructeur de l'antre souterraine 
+     * Celle-ci recoit la base, la hauteur, un object Random
+     * et un service PlacagePieceServiceInterface 
+     * 
+     * @param base represente la base qu'aura notre antre souterraine
+     * @param hauteur represente la hauteur qu'aura notre antre souterraine
+     * @param random object (dependance) qui va nous permettre de generer
+     * des nombres aleatoires dans notre antre
+     * @param placagePieceService Service permettant de determiner l'algorithme 
+     * a appliquer par rapport aux differents types de murs qu'a une piece
+     */
     public EntreSouterraine(
         int base, 
         int hauteur, 
@@ -189,6 +206,11 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
     }
 
     @Override
+    /**
+     * Retourne la representation de notre antre 
+     * sous forme d'une chaine qui va ressembler a 
+     * un dessin d'un tableau
+     */
     public String toString() {
         String entreAsText = "";
         for (int j = 0; j < hauteur; j++) {

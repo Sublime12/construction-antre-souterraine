@@ -64,7 +64,6 @@ public class PlacementPiece {
         if (porteHaut == null) {
             cotes.add(Cote.HAUT);
         }
-        
         if (porteBas == null) {
             cotes.add(Cote.BAT);
         }

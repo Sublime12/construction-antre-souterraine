@@ -1,5 +1,9 @@
 package src;
 
+/**
+ * Definit les differents types de cases qu'on peut
+ * avoir dans l'antre
+ */
 public enum Case {
 
     /**

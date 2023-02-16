@@ -1,9 +1,7 @@
 package src.Placages.Input;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -23,17 +21,21 @@ public class PieceServiceFromFile implements PieceServiceInterface {
     }
 
     private void registerPiece() {
+        Scanner scanner = null;
         try {
-        Scanner scanner = new Scanner(file);
-        scanner.nextLine();
-        while(scanner.hasNext()){
-            int base =  scanner.nextInt();
-            int hauteur = scanner.nextInt();
-            pieces.add(new Piece(base, hauteur));
-
-        }
-        } catch (Exception e) {
-        throw new RuntimeException(e);
+            scanner = new Scanner(file);
+            scanner.nextLine();
+            while(scanner.hasNext()){
+                int base =  scanner.nextInt();
+                int hauteur = scanner.nextInt();
+                pieces.add(new Piece(base, hauteur));
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (scanner != null) {
+                scanner.close();
+            }
         }   
         
     };
