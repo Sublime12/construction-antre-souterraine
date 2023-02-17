@@ -39,7 +39,6 @@ public class Principal {
             var random = new Random();
             var placagePieceService = new PlacagePieceService(random);
     
-            // try{
             var file = new File(nomDuFichier);
             entreSouterraineService = new AntreSouterraineFromFileService(
                 file,
@@ -47,12 +46,7 @@ public class Principal {
                 random
             );
             pieceService = new PieceServiceFromFile(file);
-    
-            // } catch(RuntimeException e) {
-                // System.out.println(" ce fichier n'existe pas ");
-                // return;
-            // }
-    
+        
             try {
                 entreSouterraine = entreSouterraineService.getEntreSouterraine();
                 entreSouterraine.ajouterPieceCentrale(pieceService.getPiecePrincipale()); 
@@ -61,7 +55,7 @@ public class Principal {
                 System.out.println(entreSouterraine);
     
                 // Relance l'exception pour permettre a ExceptionHandler d'afficher
-                // le message d'erreur
+                // le message d'erreur et de mettre l'exception dans le log
                 throw e;
             }
             
@@ -75,7 +69,6 @@ public class Principal {
             }
     
             System.out.println(entreSouterraine);
-    
     
         });
     }
