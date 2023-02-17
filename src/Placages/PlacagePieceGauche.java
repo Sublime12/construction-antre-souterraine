@@ -21,6 +21,9 @@ public class PlacagePieceGauche
     }
 
     @Override
+    /**
+     * @{inheritDoc}
+     */
     public PlacementPiece placerPiece(
         Case[][] tabEntreSouterraine, 
         Piece piece,

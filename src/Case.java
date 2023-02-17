@@ -48,9 +48,11 @@ public enum Case {
      */
     public char getCharRepresentation() {
         if (this == ESPACE_PLEIN) {
-            return 'x';
+            // On peut retourner un 'x' a la place d'un 'o' pour plus de visibilite 
+            return 'o';
         } else if (this == ESPACE_VIDE) {
-            return ' ';
+            // on peut retourner un ' ' a la place de '.' pour plus de beaute 
+            return '.'; 
         } else if (this == PORTE_HORIZONTALE) {
             return '-';
         } else if  (this == PORTE_VERTICALE) {
@@ -58,7 +60,7 @@ public enum Case {
         } else if (this == ESPACE_PLEIN_DE_DEPART) {
             return 'o';
         } else {
-            return 'E';
+            return 'E'; // Pour dire erreur dans l'antre
         }
     }
 

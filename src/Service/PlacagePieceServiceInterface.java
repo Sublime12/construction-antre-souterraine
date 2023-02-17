@@ -11,5 +11,9 @@ import src.Placages.PlacagePieceInterface;
  */
 public interface PlacagePieceServiceInterface {
 
+    /**
+     * @param cote
+     * @return object permettant de placer une piece
+     */
     public PlacagePieceInterface getPlacagePiece(Cote cote);
 }

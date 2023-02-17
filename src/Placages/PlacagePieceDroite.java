@@ -21,6 +21,9 @@ public class PlacagePieceDroite
 
 
     @Override
+    /**
+     * @{inheritDoc}
+     */
     public PlacementPiece placerPiece(
         Case[][] tabEntreSouterraine, 
         Piece piece, 
@@ -60,6 +63,14 @@ public class PlacagePieceDroite
 
         } catch (CantAddPieceInEntreSouterraineException e) {
 
+            // Si on ne peut pas ajouter la piece par random
+            // on applique notre algorithme de deplacement
+            // dont la signature est definie dans l'interface
+            // PeutDeplacerPieceSiSuperpose
+            // Si apres application deplacement
+            // on ne peut toujours pas ajouter la piece
+            // on va lancer un CantAddPieceInEntreSouterraineException
+            // pour dire qu'on ne peut pas deplacer la piece
             placementDeLaPiece = deplacerPiece(tabEntreSouterraine, piece, coordonneePorte, Cote.DROITE);
             remplirEntreAvecPiece(tabEntreSouterraine, placementDeLaPiece);    
         }

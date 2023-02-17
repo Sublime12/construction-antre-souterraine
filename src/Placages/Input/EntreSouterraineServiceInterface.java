@@ -8,5 +8,9 @@ import src.EntreSouterraine;
  */
 public interface EntreSouterraineServiceInterface {
 
+    /**
+     * 
+     * @return Retourne un object entre souterraine cree depuis ce service
+     */
     public EntreSouterraine getEntreSouterraine();
 }

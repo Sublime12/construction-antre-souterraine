@@ -26,6 +26,9 @@ public class PlacagePieceService implements PlacagePieceServiceInterface {
     }
 
     @Override
+    /**
+     * @{inheritDoc}
+     */
     public PlacagePieceInterface getPlacagePiece(Cote cote) {
         // PlacagePieceInterface placagePieceInterface = null;
         var placagesMap = new HashMap<Cote, PlacagePieceInterface>();
@@ -35,8 +38,6 @@ public class PlacagePieceService implements PlacagePieceServiceInterface {
         placagesMap.put(Cote.HAUT, new PlacagePieceHaut(random));
         placagesMap.put(Cote.BAT, new PlacagePieceBas(random));
 
-        // cote = Cote.BAT;
-        // TODO Auto-generated method stub
         return placagesMap.get(cote);
     }
     

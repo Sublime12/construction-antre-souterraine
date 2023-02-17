@@ -3,6 +3,11 @@ package src;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe qui va encapsuler la piece et 
+ * lui ajouter des coordonnees pour se reperer
+ * dans l'antre (ou dans toute sorte de repere a 2 dimensions)
+ */
 public class PlacementPiece {
     private Piece piece;
 
@@ -18,6 +23,10 @@ public class PlacementPiece {
         this.pointHautGaucheDeLaPiece = pointHautGaucheDeLaPiece;
     }
 
+    /**
+     * 
+     * @return la coordonnee du point haut gauche de la piece placee
+     */
     public Coordonnee getCoordonneePointHautGauchePiece() {
 
         // En donnant une copie des coordonnee on s'evite e
@@ -29,6 +38,10 @@ public class PlacementPiece {
         );
     }
 
+    /**
+     * 
+     * @return la coordonnee du point haut droit de la piece placee
+     */
     public Coordonnee getCoordonneePointHautDroitePiece() {
         return new Coordonnee(
             pointHautGaucheDeLaPiece.getX() + piece.getBase() - 1,
@@ -36,6 +49,10 @@ public class PlacementPiece {
         );
     }
 
+    /**
+     * 
+     * @return la coordonnee du point bas gauche de la piece placee
+     */
     public Coordonnee getCoordonneePointBasGauchePiece() {
         return new Coordonnee(
             pointHautGaucheDeLaPiece.getX(),
@@ -43,6 +60,10 @@ public class PlacementPiece {
         );
     }
 
+    /**
+     * 
+     * @return la coordonnnee du point bas droite de la piece placee
+     */
     public Coordonnee getCoordonneePointBasDroitePiece() {
         return new Coordonnee(
             pointHautGaucheDeLaPiece.getX() + piece.getBase() - 1,
@@ -51,6 +72,10 @@ public class PlacementPiece {
     }
 
 
+    /**
+     * 
+     * @return la liste des cotes disponibles de notre piece placee
+     */
     public List<Cote> getCotesDisponibles() {
 
         var cotes = new ArrayList<Cote>();

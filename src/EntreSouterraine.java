@@ -1,10 +1,10 @@
 package src;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.PieceCentraleNaPasEteAjouteeException;
 import src.Placages.PlacagePieceInterface;
 import src.Service.PlacagePieceServiceInterface;
 
@@ -18,13 +18,13 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
 
     private int hauteur;
 
-    private int tentativeAjout = 0;
+    // private int tentativeAjout = 0;
 
     private Case[][] tabEntreSouterraine;
 
     private ArrayList<PlacementPiece> placementsPieces = new ArrayList<>();
 
-    private ArrayList<PlacementPiece> placementPiecesPleines = new ArrayList<>();
+    // private ArrayList<PlacementPiece> placementPiecesPleines = new ArrayList<>();
 
     private boolean estPieceCentraleAjoutee = false;
 
@@ -80,6 +80,9 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
     }
 
     @Override
+    /**
+     * @{inheritDoc}
+     */
     public void ajouterPiece(Piece piece) {
 
         /**
@@ -165,14 +168,18 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
     } 
 
     @Override
+    /**
+     * {@inheritDoc}
+     */
     public void ajouterPieceCentrale(Piece piece) {
         if (estPieceCentraleAjoutee()) {
             throw new CantAddPieceInEntreSouterraineException("La piece centrale est deja ajoute");
         }
         
         if (piece.getBase() > base || piece.getHauteur() > hauteur) {
-            throw new CantAddPieceInEntreSouterraineException(
-                "On ne peut pas ajouter la piece centrale, la piece donnee est trop grande"
+            throw new PieceCentraleNaPasEteAjouteeException(
+                "On ne peut pas ajouter la piece centrale, la piece donnee est trop grande; piece : " + piece + "\n" +
+                "Taille antre : [base = " + base + ", hauteur = " + hauteur 
             );
         }
             
@@ -201,6 +208,9 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
     }
 
     @Override
+    /**
+     * @{inheritDoc}
+     */
     public boolean estPieceCentraleAjoutee() {
         return estPieceCentraleAjoutee;
     }
