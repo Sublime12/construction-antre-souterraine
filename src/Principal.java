@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.CantAddPieceInAntreSouterraineException;
 import src.Exceptions.PieceCentraleNaPasEteAjouteeException;
-import src.Placages.Input.EntreSouterraineFromFileService;
-import src.Placages.Input.EntreSouterraineServiceInterface;
+import src.Placages.Input.AntreSouterraineFromFileService;
+import src.Placages.Input.AntreSouterraineServiceInterface;
 import src.Placages.Input.PieceServiceFromFile;
 import src.Placages.Input.PieceServiceInterface;
 import src.Service.PlacagePieceService;
@@ -32,16 +32,16 @@ public class Principal {
         new ExceptionHandler().handle(() -> {
             var nomDuFichier = lireNomFichier();
 
-            EntreSouterraine entreSouterraine = null ;   
+            AntreSouterraine entreSouterraine = null ;   
             
             PieceServiceInterface pieceService = null;
-            EntreSouterraineServiceInterface entreSouterraineService = null;
+            AntreSouterraineServiceInterface entreSouterraineService = null;
             var random = new Random();
             var placagePieceService = new PlacagePieceService(random);
     
             // try{
             var file = new File(nomDuFichier);
-            entreSouterraineService = new EntreSouterraineFromFileService(
+            entreSouterraineService = new AntreSouterraineFromFileService(
                 file,
                 placagePieceService,
                 random
@@ -88,7 +88,7 @@ public class Principal {
      * @param random Un generateur de nombre aleatoire
      * @param pieces Les pieces a ajouter dans l'antre
      */
-    private static void ajouterToutesLesPieces(EntreSouterraine entreSouterraine, Random random, ArrayList<Piece> pieces) {
+    private static void ajouterToutesLesPieces(AntreSouterraine entreSouterraine, Random random, ArrayList<Piece> pieces) {
         int i = 0;
         Piece randomPiece = null;
         while (i < 100 && !pieces.isEmpty()) {
@@ -97,7 +97,7 @@ public class Principal {
             try {
                 entreSouterraine.ajouterPiece(randomPiece);
                 pieces.remove(randomPiece);
-            } catch (CantAddPieceInEntreSouterraineException e) {
+            } catch (CantAddPieceInAntreSouterraineException e) {
                 i++;
             }
         }

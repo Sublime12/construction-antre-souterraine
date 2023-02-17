@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
-import src.EntreSouterraine;
+import src.AntreSouterraine;
 import src.Service.PlacagePieceServiceInterface;
 
 
@@ -15,11 +15,11 @@ import src.Service.PlacagePieceServiceInterface;
  * @{inheritDoc}
  * 
  */
-public class EntreSouterraineFromFileService implements EntreSouterraineServiceInterface {
+public class AntreSouterraineFromFileService implements AntreSouterraineServiceInterface {
 
     private File file;
 
-    private EntreSouterraine entreSouterraine;
+    private AntreSouterraine entreSouterraine;
 
     private PlacagePieceServiceInterface placagePieceService;
 
@@ -31,7 +31,7 @@ public class EntreSouterraineFromFileService implements EntreSouterraineServiceI
      * dans notre antre
      * @param random Un generateur qui va nous permettre d'avoir des nombres aleatoires
      */
-    public EntreSouterraineFromFileService(
+    public AntreSouterraineFromFileService(
         File file,
         PlacagePieceServiceInterface placagePieceService,
         Random random
@@ -45,7 +45,7 @@ public class EntreSouterraineFromFileService implements EntreSouterraineServiceI
     /**
      * @{inheritDoc}
      */
-    public EntreSouterraine getEntreSouterraine() {
+    public AntreSouterraine getEntreSouterraine() {
         int base = 0;
         int hauteur = 0;
         Scanner scanner = null;
@@ -55,7 +55,7 @@ public class EntreSouterraineFromFileService implements EntreSouterraineServiceI
                 scanner = new Scanner(file);
                 base = scanner.nextInt();
                 hauteur = scanner.nextInt();
-                entreSouterraine = new EntreSouterraine(base, hauteur, random, placagePieceService);
+                entreSouterraine = new AntreSouterraine(base, hauteur, random, placagePieceService);
      
             } catch (IOException e) {
                 throw new RuntimeException("Erreur lors de la lecture fichier : " + file.getAbsolutePath());

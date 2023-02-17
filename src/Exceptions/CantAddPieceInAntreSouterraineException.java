@@ -7,12 +7,12 @@ package src.Exceptions;
  * parce que cela donne beaucoup plus de flexibilite
  * sur la gestion d'exception-----)
  */
-public class CantAddPieceInEntreSouterraineException extends RuntimeException {
-    public CantAddPieceInEntreSouterraineException(String message) {
+public class CantAddPieceInAntreSouterraineException extends RuntimeException {
+    public CantAddPieceInAntreSouterraineException(String message) {
         super(message);
     }
 
-    public CantAddPieceInEntreSouterraineException(String message, Throwable e) {
+    public CantAddPieceInAntreSouterraineException(String message, Throwable e) {
         super(message, e);   
     }
 

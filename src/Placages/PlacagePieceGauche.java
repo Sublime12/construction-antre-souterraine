@@ -7,7 +7,7 @@ import src.Coordonnee;
 import src.Cote;
 import src.Piece;
 import src.PlacementPiece;
-import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.CantAddPieceInAntreSouterraineException;
 
 public class PlacagePieceGauche 
     extends AbstractPlacagePiece 
@@ -65,7 +65,7 @@ public class PlacagePieceGauche
             // on ne peut toujours pas ajouter la piece
             // on va lancer un CantAddPieceInEntreSouterraineException
             // pour dire qu'on ne peut pas deplacer la piece
-        } catch (CantAddPieceInEntreSouterraineException e) {
+        } catch (CantAddPieceInAntreSouterraineException e) {
             // Peut lancer une exception si n'arrive pas a deplacer la piece
             placementDeLaPiece = deplacerPiece(tabEntreSouterraine, piece, coordonneePorte, Cote.GAUCHE);
 

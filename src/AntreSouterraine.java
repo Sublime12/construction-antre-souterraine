@@ -3,7 +3,7 @@ package src;
 import java.util.ArrayList;
 import java.util.Random;
 
-import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.CantAddPieceInAntreSouterraineException;
 import src.Exceptions.PieceCentraleNaPasEteAjouteeException;
 import src.Placages.PlacagePieceInterface;
 import src.Service.PlacagePieceServiceInterface;
@@ -13,7 +13,7 @@ import src.Service.PlacagePieceServiceInterface;
  * Elle permet d'ajouter la piece centrale
  * et les autres pieces
  */
-public class EntreSouterraine extends AbstractEntreSouterraine {
+public class AntreSouterraine extends AbstractAntreSouterraine {
     private int base;
 
     private int hauteur;
@@ -44,7 +44,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
      * @param placagePieceService Service permettant de determiner l'algorithme 
      * a appliquer par rapport aux differents types de murs qu'a une piece
      */
-    public EntreSouterraine(
+    public AntreSouterraine(
         int base, 
         int hauteur, 
         Random random, 
@@ -173,7 +173,7 @@ public class EntreSouterraine extends AbstractEntreSouterraine {
      */
     public void ajouterPieceCentrale(Piece piece) {
         if (estPieceCentraleAjoutee()) {
-            throw new CantAddPieceInEntreSouterraineException("La piece centrale est deja ajoute");
+            throw new CantAddPieceInAntreSouterraineException("La piece centrale est deja ajoute");
         }
         
         if (piece.getBase() > base || piece.getHauteur() > hauteur) {

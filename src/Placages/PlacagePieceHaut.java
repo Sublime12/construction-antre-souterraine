@@ -7,7 +7,7 @@ import src.Coordonnee;
 import src.Cote;
 import src.Piece;
 import src.PlacementPiece;
-import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.CantAddPieceInAntreSouterraineException;
 
 public class PlacagePieceHaut
     extends AbstractPlacagePiece
@@ -52,7 +52,7 @@ public class PlacagePieceHaut
                 placementDeLaPiece
             );
 
-        } catch (CantAddPieceInEntreSouterraineException e) {
+        } catch (CantAddPieceInAntreSouterraineException e) {
             // Si on ne peut pas ajouter la piece par random
             // on applique notre algorithme de deplacement
             // dont la signature est definie dans l'interface
@@ -70,7 +70,7 @@ public class PlacagePieceHaut
         try {
             tabEntreSouterraine[x][y] = Case.PORTE_HORIZONTALE;
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new CantAddPieceInEntreSouterraineException("La porte n'a pas pu etre ajoute" ,e);
+            throw new CantAddPieceInAntreSouterraineException("La porte n'a pas pu etre ajoute" ,e);
         }
 
         placementPieceDeDepart.setPorteHaut(coordonneePorte);

@@ -2,7 +2,7 @@ package src.Placages;
 
 import src.Case;
 import src.PlacementPiece;
-import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.CantAddPieceInAntreSouterraineException;
 
 
 /**
@@ -71,7 +71,7 @@ public abstract class AbstractPlacagePiece implements PeutDeplacerPieceSiSuperpo
                 placementPiece
             )
         ) {
-            throw new CantAddPieceInEntreSouterraineException(
+            throw new CantAddPieceInAntreSouterraineException(
                 "La piece " + placementPiece + "ne peut etre ajoutee"
             );
         }

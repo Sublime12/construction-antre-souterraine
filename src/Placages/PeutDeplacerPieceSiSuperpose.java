@@ -5,7 +5,7 @@ import src.Coordonnee;
 import src.Cote;
 import src.Piece;
 import src.PlacementPiece;
-import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.CantAddPieceInAntreSouterraineException;
 
 
 /**
@@ -36,7 +36,7 @@ public interface PeutDeplacerPieceSiSuperpose {
      * @return la nouvelle coordonnee du point haut gauche ou la piece
      * pourrait etre placee
      * 
-     * @throws CantAddPieceInEntreSouterraineException si on ne peut pas deplacer
+     * @throws CantAddPieceInAntreSouterraineException si on ne peut pas deplacer
      * la piece
      */
     default PlacementPiece deplacerPiece(
@@ -92,7 +92,7 @@ public interface PeutDeplacerPieceSiSuperpose {
         }
 
         if ( !peutDeplacerPiece) {
-            throw new CantAddPieceInEntreSouterraineException("La piece n'a pas pu etre deplace");
+            throw new CantAddPieceInAntreSouterraineException("La piece n'a pas pu etre deplace");
         }
         return placementDeplacementDeLaPiece;
     }

@@ -1,13 +1,13 @@
 package src;
 
-import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.CantAddPieceInAntreSouterraineException;
 
-public abstract class AbstractEntreSouterraine {
+public abstract class AbstractAntreSouterraine {
 
     /**
      * 
      * @param piece
-     * @throws CantAddPieceInEntreSouterraineException 
+     * @throws CantAddPieceInAntreSouterraineException 
      * <description>
      *      Lorsque la piece centrale est plus grande que l'antre
      * <description/>
