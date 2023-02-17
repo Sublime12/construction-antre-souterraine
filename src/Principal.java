@@ -14,6 +14,10 @@ import src.Placages.Input.PieceServiceInterface;
 import src.Service.PlacagePieceService;
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Classe principale ou se trouve la methode main
  */
 public class Principal {

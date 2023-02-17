@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Enum representant les 4 cotes qu'on peut
- * avoir
  * 
  */
 public enum Cote {

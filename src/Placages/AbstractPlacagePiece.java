@@ -6,6 +6,10 @@ import src.Exceptions.CantAddPieceInAntreSouterraineException;
 
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Cette classe contient les methodes de utilitaires
  * pour nous permettre de placer une piece
  * Le mot <code>Placage</code> (a la place de Placement)  dans <code>AbstractPlacagePiece</code>

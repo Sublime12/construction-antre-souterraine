@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Classe qui va encapsuler la piece et 
  * lui ajouter des coordonnees pour se reperer
  * dans l'antre (ou dans toute sorte de repere a 2 dimensions)

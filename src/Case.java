@@ -1,6 +1,10 @@
 package src;
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Definit les differents types de cases qu'on peut
  * avoir dans l'antre
  */

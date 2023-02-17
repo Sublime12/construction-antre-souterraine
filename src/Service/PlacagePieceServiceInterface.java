@@ -5,6 +5,10 @@ import src.Placages.PlacagePieceInterface;
 
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Interface de base pour toute classe (service) qui
  * va permettre de recuperer une implementation
  * du placement du piece

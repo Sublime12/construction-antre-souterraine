@@ -9,6 +9,10 @@ import src.Placages.PlacagePieceInterface;
 import src.Service.PlacagePieceServiceInterface;
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Classe qui represente l'antre souterraine 
  * Elle permet d'ajouter la piece centrale
  * et les autres pieces

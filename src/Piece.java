@@ -1,6 +1,10 @@
 package src;
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Classe qui represente une piece (et par definition la piece centrale 
  * est aussi une piece)
  */

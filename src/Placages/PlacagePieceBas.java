@@ -8,7 +8,13 @@ import src.Cote;
 import src.Piece;
 import src.PlacementPiece;
 import src.Exceptions.CantAddPieceInAntreSouterraineException;
-
+/**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
+ * cette class permet de placer les pieces en bas
+ */
 public class PlacagePieceBas
     extends AbstractPlacagePiece
     implements PlacagePieceInterface 

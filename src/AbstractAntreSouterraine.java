@@ -5,12 +5,16 @@ import src.Exceptions.CantAddPieceInAntreSouterraineException;
 public abstract class AbstractAntreSouterraine {
 
     /**
-     * 
+     * nom: TSHIMPANGILA TSHIMANGA Sublime
+     * code Permaent: TSHS91260100
+     * nom: OGUNA Chukwudi Antonio
+     * code Permanent: OGUC74290400
      * @param piece
      * @throws CantAddPieceInAntreSouterraineException 
      * <description>
-     *      Lorsque la piece centrale est plus grande que l'antre
+     *  Lorsque la piece centrale est plus grande que l'antre
      * <description/>
+     
      */
     public abstract void ajouterPieceCentrale(Piece piece);
 

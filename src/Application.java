@@ -6,8 +6,11 @@ import java.io.FileWriter;
 import java.util.function.Function;
 
 /** 
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * cette classe  contient la logique d'execution de notre application
- *
  */ 
 public class Application {
     public static void executer(Function function){

@@ -9,6 +9,10 @@ import src.Exceptions.CantAddPieceInAntreSouterraineException;
 
 
 /**
+ * nom: TSHIMPANGILA TSHIMANGA Sublime
+ * code Permaent: TSHS91260100
+ * nom: OGUNA Chukwudi Antonio
+ * code Permanent: OGUC74290400
  * Elle permet de definir un comportement sur un element
  * si cette element se retrouvait superposer sur
  * un autre
