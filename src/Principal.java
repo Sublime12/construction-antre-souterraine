@@ -1,63 +1,96 @@
 package src;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 import src.Exceptions.CantAddPieceInEntreSouterraineException;
+import src.Exceptions.PieceCentraleNaPasEteAjouteeException;
 import src.Placages.Input.EntreSouterraineFromFileService;
 import src.Placages.Input.EntreSouterraineServiceInterface;
 import src.Placages.Input.PieceServiceFromFile;
 import src.Placages.Input.PieceServiceInterface;
 import src.Service.PlacagePieceService;
 
+/**
+ * Classe principale ou se trouve la methode main
+ */
 public class Principal {
     public static  String nomDuFichier;
-    
 
-
+    /**
+     * Methode main du programme
+     * Elle est le point d'entre de notre programme
+     * Elle sert a instancier les differents services 
+     * dont auront besoin les differentes classes
+     * du programme et elle contient la logique d'execution
+     * de l'algorithme de facon generale
+     * @param args
+     */
     public static void main(String[] args) {
-         int compteurEchec = 0;
-        System.out.println("veillez saisir le nom du fichier");
-        Scanner scanner = new Scanner(System.in);
-           nomDuFichier = scanner.nextLine();  
-         EntreSouterraine entreSouterraine = null ;   
-        
-        var random = new Random();
-        var placagePieceService = new PlacagePieceService(random);
-        PieceServiceInterface pieceService = null;
-        EntreSouterraineServiceInterface entreSouterraineService = null;
-        try{
+        new ExceptionHandler().handle(() -> {
+            var nomDuFichier = lireNomFichier();
+
+            EntreSouterraine entreSouterraine = null ;   
+            
+            PieceServiceInterface pieceService = null;
+            EntreSouterraineServiceInterface entreSouterraineService = null;
+            var random = new Random();
+            var placagePieceService = new PlacagePieceService(random);
+    
+            // try{
             var file = new File(nomDuFichier);
             entreSouterraineService = new EntreSouterraineFromFileService(
                 file,
                 placagePieceService,
                 random
             );
-         pieceService = new PieceServiceFromFile(file);
-
-        } catch(RuntimeException e) {
-            System.out.println(" ce fichier n'exsite pas ");
-            return;
-        }
-
-        try {
-            entreSouterraine = entreSouterraineService.getEntreSouterraine();
-            entreSouterraine.ajouterPieceCentrale(pieceService.getPiecePrincipale()); 
-        } catch (CantAddPieceInEntreSouterraineException e) {
-            System.out.println(entreSouterraine);
-            return;
-        }
+            pieceService = new PieceServiceFromFile(file);
+    
+            // } catch(RuntimeException e) {
+                // System.out.println(" ce fichier n'existe pas ");
+                // return;
+            // }
+    
+            try {
+                entreSouterraine = entreSouterraineService.getEntreSouterraine();
+                entreSouterraine.ajouterPieceCentrale(pieceService.getPiecePrincipale()); 
+            } catch (PieceCentraleNaPasEteAjouteeException e) {
+                // Afficher l'antre vide  si la piece centrale est trop grande
+                System.out.println(entreSouterraine);
+    
+                // Relance l'exception pour permettre a ExceptionHandler d'afficher
+                // le message d'erreur
+                throw e;
+            }
+            
+    
+            var pieces = pieceService.getPieces();
+            pieces = new ArrayList<>(pieces);
+            pieces.remove(0);
+            if (entreSouterraine.estPieceCentraleAjoutee()) {
+                ajouterToutesLesPieces(entreSouterraine, random, pieces);
         
+            }
+    
+            System.out.println(entreSouterraine);
+    
+    
+        });
+    }
 
-        var pieces = pieceService.getPieces();
-        pieces = new ArrayList<>(pieces);
-        pieces.remove(0);
-        int i = 0 ;
-        Piece randomPiece = null ;
+    /**
+     * Tente d'ajouter toutes les pieces dans l'antre 
+     * Tente 100 fois et arrete si elle ne peut pas tout placer
+     * 
+     * @param entreSouterraine Antre qui doit les pieces
+     * @param random Un generateur de nombre aleatoire
+     * @param pieces Les pieces a ajouter dans l'antre
+     */
+    private static void ajouterToutesLesPieces(EntreSouterraine entreSouterraine, Random random, ArrayList<Piece> pieces) {
+        int i = 0;
+        Piece randomPiece = null;
         while (i < 100 && !pieces.isEmpty()) {
             int randomIndex = random.nextInt(pieces.size());
             randomPiece = pieces.get(randomIndex);
@@ -68,10 +101,15 @@ public class Principal {
                 i++;
             }
         }
-        
+    }
 
-        System.out.println(entreSouterraine);
-        
+    private static String lireNomFichier() {
+        // Lecture du fichier
+        System.out.println("veillez saisir le nom du fichier");
+        Scanner scanner = new Scanner(System.in);
+        nomDuFichier = scanner.nextLine();
+        scanner.close();
 
-   }
+        return nomDuFichier;
+    }
 }
