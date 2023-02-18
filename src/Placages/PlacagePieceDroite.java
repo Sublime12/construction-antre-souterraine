@@ -9,11 +9,10 @@ import src.Piece;
 import src.PlacementPiece;
 import src.Exceptions.CantAddPieceInAntreSouterraineException;
 /**
- * nom: TSHIMPANGILA TSHIMANGA Sublime
- * code Permaent: TSHS91260100
- * nom: OGUNA Chukwudi Antonio
- * code Permanent: OGUC74290400
  * cette classe permet de placer la piece droite
+ * 
+ * @author TSHIMPANGILA TSHIMANGA, Sublime (TSHS91260100)
+ * @author OGUNA Chukwudi Antonio (OGUC74290400)
  */
 public class PlacagePieceDroite
     extends AbstractPlacagePiece

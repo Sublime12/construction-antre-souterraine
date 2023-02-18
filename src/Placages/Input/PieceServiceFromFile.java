@@ -8,15 +8,12 @@ import java.util.Scanner;
 import src.Piece;
 
 /**
- * nom: TSHIMPANGILA TSHIMANGA Sublime
- * code Permaent: TSHS91260100
- * nom: OGUNA Chukwudi Antonio
- * code Permanent: OGUC74290400
  * Service qui permet de creer les differentes pieces 
- * en recuperant les informations dans un fichier
- * txt
- * 
+ * en recuperant les informations dans un fichier texte
  * @{inheritDoc}
+ * 
+ * @author TSHIMPANGILA TSHIMANGA, Sublime (TSHS91260100)
+ * @author OGUNA Chukwudi Antonio (OGUC74290400)
  */
 public class PieceServiceFromFile implements PieceServiceInterface {
 

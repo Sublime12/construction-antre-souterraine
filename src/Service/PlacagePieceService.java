@@ -13,13 +13,12 @@ import src.Placages.PlacagePieceInterface;
 
 
 /**
- * nom: TSHIMPANGILA TSHIMANGA Sublime
- * code Permaent: TSHS91260100
- * nom: OGUNA Chukwudi Antonio
- * code Permanent: OGUC74290400
  * Service qui permet de recuperer l'implementation 
  * de la methode de remplissage d'une piece 
  * par rapport a un cote qui a ete donne
+ * 
+ * @author TSHIMPANGILA TSHIMANGA, Sublime (TSHS91260100)
+ * @author OGUNA Chukwudi Antonio (OGUC74290400)
  */
 public class PlacagePieceService implements PlacagePieceServiceInterface {
 

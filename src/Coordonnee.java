@@ -2,12 +2,11 @@ package src;
 
 
 /**
- *  nom: TSHIMPANGILA TSHIMANGA Sublime
- * code Permaent: TSHS91260100
- * nom: OGUNA Chukwudi Antonio
- * code Permanent: OGUC74290400
  * Represente une coordonnee pour un point
  * dans un tableau a deux dimensions
+ * 
+ * @author TSHIMPANGILA TSHIMANGA, Sublime (TSHS91260100)
+ * @author OGUNA Chukwudi Antonio (OGUC74290400)
  */
 public class Coordonnee {
     private int x;

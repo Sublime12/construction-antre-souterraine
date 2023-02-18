@@ -10,13 +10,12 @@ import src.Service.PlacagePieceServiceInterface;
 
 
 /**
- * nom: TSHIMPANGILA TSHIMANGA Sublime
- * code Permaent: TSHS91260100
- * nom: OGUNA Chukwudi Antonio
- * code Permanent: OGUC74290400
  * Service qui va permettre de creer une antre souterraine grace aux informations se
  * trouvant dans un fichier txt
  * @{inheritDoc}
+ * 
+ * @author TSHIMPANGILA TSHIMANGA, Sublime (TSHS91260100)
+ * @author OGUNA Chukwudi Antonio (OGUC74290400)
  * 
  */
 public class AntreSouterraineFromFileService implements AntreSouterraineServiceInterface {

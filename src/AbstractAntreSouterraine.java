@@ -2,13 +2,18 @@ package src;
 
 import src.Exceptions.CantAddPieceInAntreSouterraineException;
 
+/**
+ * Classe abstraite definissant le contract que devrait avoir 
+ * une AntreSouterraine
+ * 
+ * @author TSHIMPANGILA TSHIMANGA, Sublime (TSHS91260100)
+ * @author OGUNA Chukwudi Antonio (OGUC74290400)
+ */
 public abstract class AbstractAntreSouterraine {
 
     /**
-     * nom: TSHIMPANGILA TSHIMANGA Sublime
-     * code Permaent: TSHS91260100
-     * nom: OGUNA Chukwudi Antonio
-     * code Permanent: OGUC74290400
+     * Permet d'ajouter la piece centrale
+     * 
      * @param piece
      * @throws CantAddPieceInAntreSouterraineException 
      * <description>
@@ -19,7 +24,7 @@ public abstract class AbstractAntreSouterraine {
     public abstract void ajouterPieceCentrale(Piece piece);
 
     /**
-     * Methode permettant de placer une piece dans une antre
+     * Permet de placer une piece dans une antre
      * souterraine
      * 
      * @param piece La piece a placer

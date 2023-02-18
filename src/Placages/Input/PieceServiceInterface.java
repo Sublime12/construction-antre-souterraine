@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import src.Piece;
 
 /**
- * nom: TSHIMPANGILA TSHIMANGA Sublime
- * code Permaent: TSHS91260100
- * nom: OGUNA Chukwudi Antonio
- * code Permanent: OGUC74290400
  * Interface de base pour tous les services permettant de
  * recuperer des pieces
+ * 
+ * @author TSHIMPANGILA TSHIMANGA, Sublime (TSHS91260100)
+ * @author OGUNA Chukwudi Antonio (OGUC74290400)
  */
 public interface PieceServiceInterface {
 

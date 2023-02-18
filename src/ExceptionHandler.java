@@ -5,14 +5,13 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 /**
- * nom: TSHIMPANGILA TSHIMANGA Sublime
- * code Permaent: TSHS91260100
- * nom: OGUNA Chukwudi Antonio
- * code Permanent: OGUC74290400
  * Gestionnaire d'exception de notre 
  * application, elle log les exceptions dans
  * un fichier dont la constante est
  * <code>ExceptionHandler.ERRORS_LOG_FILE<code/>
+ * 
+ * @author TSHIMPANGILA TSHIMANGA, Sublime (TSHS91260100)
+ * @author OGUNA Chukwudi Antonio (OGUC74290400)
  */
 public class ExceptionHandler {
     
