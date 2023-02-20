@@ -1,8 +1,8 @@
 # ANTRE SOUTERRAINE
 Ce programme est fait par les etudiants :  
 
-    - Antonio, OGUNA CHUKWUDI (OGUC74290400) et
-    - Sublime, TSHIMPANGILA TSHIMANGA (TSHS91260100)
+    - Sublime, TSHIMPANGILA TSHIMANGA
+    - Antonio, OGUNA CHUKWUDI et
 
 Jeu de creation d'antre souterraine en Java
 Le but du jeu est de placer des pieces dans une 
